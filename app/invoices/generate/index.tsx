@@ -1,18 +1,25 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Text, View } from 'react-native';
+import { z } from 'zod';
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
 import CustomTextInput from '~/components/CustomTextInput';
 import { KeyboardAvoidingScrollView } from '~/components/KeyboardAvoidingScrollView';
 
-// const TextInput = styled(
-//   TextInput,
-//   'border border-gray-300 rounded-md px-4 py-2 text-sm mb-4 w-full'
-// );
+const senderInfoSchema = z.object({
+  senderName: z.string({ required_error: 'Name is required' }).min(1, 'Name is required'),
+  address: z.string({ required_error: 'Address is required' }).min(1, 'Address is required'),
+  phone: z.string({ required_error: 'Phone number is required' }).min(1, 'Phone number is required'),
+  email: z.string({ required_error: 'Email address is required' }).email('Invalid email address').min(1, 'Email address is required'),
+  taxId: z.string().optional(),
+});
+
+type SenderInfo = z.infer<typeof senderInfoSchema>
 
 const SenderInfoScreen = ({ }) => {
-  const form = useForm();
+  const form = useForm<SenderInfo>({ resolver: zodResolver(senderInfoSchema) });
   const { handleSubmit } = form
 
   const [senderName, setSenderName] = useState('');
