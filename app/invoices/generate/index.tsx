@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { Text, View } from 'react-native';
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
@@ -11,10 +12,14 @@ import { KeyboardAvoidingScrollView } from '~/components/KeyboardAvoidingScrollV
 // );
 
 const SenderInfoScreen = ({ }) => {
+  const form = useForm();
+  const { handleSubmit } = form
+
   const [senderName, setSenderName] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [taxId, setTaxId] = useState('');
 
   const handleNext = () => {
     // Validate inputs (e.g., check if fields are empty or invalid)
@@ -28,6 +33,10 @@ const SenderInfoScreen = ({ }) => {
     // });
   };
 
+  const onSubmit = (data: any) => {
+    console.log('good to go');
+  }
+
   return (
     <>
       <Container>
@@ -36,16 +45,23 @@ const SenderInfoScreen = ({ }) => {
             <Text className="text-3xl font-bold text-gray-900 mb-8 text-center">
               Sender Information
             </Text>
-
-            <View className="space-y-4">
-              <CustomTextInput label="Your Name / Business Name" value={senderName} placeholder="Enter your name or business name" onChangeText={setSenderName} />
-              <CustomTextInput label='Address' value={address} placeholder='Enter your address' onChangeText={setAddress} multiline />
-              <CustomTextInput label='Phone Number' value={phone} placeholder='Enter your phone number' onChangeText={setPhone} />
-              <CustomTextInput label='Email Address' value={email} placeholder='Enter your email address' onChangeText={setEmail} />
-              <CustomTextInput label='Tax ID' value='' placeholder='Enter your tax ID' />
-            </View>
+            <FormProvider {...form}>
+              <View className='gap-2'>
+                <CustomTextInput
+                  name="senderName"
+                  label="Your Name / Business Name"
+                  value={senderName}
+                  placeholder="Enter your name or business name"
+                  onChangeText={setSenderName}
+                />
+                <CustomTextInput name='address' label='Address' value={address} placeholder='Enter your address' onChangeText={setAddress} multiline />
+                <CustomTextInput name='phone' label='Phone Number' value={phone} placeholder='Enter your phone number' onChangeText={setPhone} />
+                <CustomTextInput name='email' label='Email Address' value={email} placeholder='Enter your email address' onChangeText={setEmail} />
+                <CustomTextInput name='taxId' label='Tax ID' value={taxId} placeholder='Enter your tax ID' onChangeText={setTaxId} />
+              </View>
+            </FormProvider>
           </View>
-          <Button title='Next' className='mt-auto w-5/6 mx-auto' />
+          <Button title='Next' className='mt-auto w-5/6 mx-auto' onPress={handleSubmit(onSubmit)} />
         </KeyboardAvoidingScrollView>
       </Container>
     </>
