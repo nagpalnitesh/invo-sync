@@ -71,7 +71,7 @@ const ItemsInfoScreen = ({ }) => {
             </View>
             <FormProvider {...form}>
               {fields.map((field, index) => (
-                <View key={field.id} className='gap-1 mb-2'>
+                <View key={field.id} className='gap-2 mb-2 p-4 rounded-lg bg-white'>
                   <CustomTextInput name={`items.${index}.name`} label='Name' placeholder='Enter name' />
                   <CustomTextInput name={`items.${index}.description`} label='Description' placeholder='Enter description' multiline />
                   <View className='flex-row items-center gap-2'>
@@ -95,7 +95,7 @@ const ItemsInfoScreen = ({ }) => {
                   </View>
                 </View>
               ))}
-              <Button title='Add Item' className='mt-5 w-5/6 mx-auto' onPress={() => append({ name: '', description: '', quantity: 0, price: 0 })} />
+              <Button title='Add Item' variant='link' className='mt-5 w-5/6 mx-auto' onPress={() => append({ name: '', description: '', quantity: 0, price: 0 })} />
             </FormProvider>
           </View>
           <Button title='Next' className='mt-auto w-5/6 mx-auto' onPress={form.handleSubmit(onSubmit)} />
