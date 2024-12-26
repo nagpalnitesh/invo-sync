@@ -18,7 +18,7 @@ export default function CustomTextInput({ label, name, ...props }: CustomTextInp
                 <TextInput {...props}
                     placeholderTextColor="#6B7280"
                     className="w-full bg-white border border-gray-300 rounded-lg p-4 text-gray-900 focus:border-gray-900"
-                    value={value}
+                    value={value?.toString()}
                     onChangeText={onChange}
                     onBlur={onBlur}
                 />

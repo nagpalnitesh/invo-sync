@@ -21,7 +21,7 @@ const senderInfoSchema = z.object({
 type SenderInfo = z.infer<typeof senderInfoSchema>
 
 const SenderInfoScreen = ({ }) => {
-  const form = useForm<SenderInfo>({ resolver: zodResolver(senderInfoSchema), defaultValues: { senderName: 'Nitesh Nagpal', address: '123 Main Street', phone: '+91 987654321', email: 'nitesh@100x.dev', taxId: '1234567890' } });
+  const form = useForm<SenderInfo>({ resolver: zodResolver(senderInfoSchema), defaultValues: { senderName: 'Client Name', address: '123 Main Street', phone: '+91 987654321', email: 'nitesh@100x.dev', taxId: '1234567890' } });
   const { handleSubmit } = form
 
   const [senderName, setSenderName] = useState('');
@@ -43,7 +43,7 @@ const SenderInfoScreen = ({ }) => {
   };
 
   const onSubmit = (data: any) => {
-    router.push('/invoices/generate/recipient');
+    router.push('/invoices/generate/invoice-info');
   }
 
   return (
@@ -57,7 +57,7 @@ const SenderInfoScreen = ({ }) => {
               </TouchableOpacity>
               {/* <Button title='Back' className='mt-5 w-1/6 mx-auto' onPress={() => router.back()} /> */}
               <Text className="text-3xl font-bold text-gray-900 text-center">
-                Sender Information
+                Recipient Information
               </Text>
               <Ionicons name="chevron-back-circle-outline" size={28} color="black" className='opacity-0' />
             </View>
