@@ -27,6 +27,20 @@ const SummaryScreen = () => {
                         <Ionicons name="chevron-back-circle-outline" size={28} color="black" className="opacity-0" />
                     </View>
 
+                    {/* Invoice Details Card */}
+                    {invoice.invoice && (
+                        <>
+                            <Text className="text-xl font-bold mb-2 color-slate-500">Invoice Details</Text>
+                            <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                                <View className="gap-1">
+                                    <Text className="text-gray-600">Invoice #: {invoice.invoice.invoiceNumber}</Text>
+                                    <Text className="text-gray-600">Date: {invoice.invoice.date}</Text>
+                                    <Text className="text-gray-600">Due Date: {invoice.invoice.dueDate}</Text>
+                                </View>
+                            </View>
+                        </>
+                    )}
+
                     {/* Sender Info Card */}
                     {invoice.sender && (
                         <>
@@ -54,20 +68,6 @@ const SummaryScreen = () => {
                                     <Text className="text-gray-600">{invoice.recipient.address}</Text>
                                     <Text className="text-gray-600">{invoice.recipient.email}</Text>
                                     <Text className="text-gray-600">{invoice.recipient.taxId}</Text>
-                                </View>
-                            </View>
-                        </>
-                    )}
-
-                    {/* Invoice Details Card */}
-                    {invoice.invoice && (
-                        <>
-                            <Text className="text-xl font-bold mb-2 color-slate-500">Invoice Details</Text>
-                            <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
-                                <View className="gap-1">
-                                    <Text className="text-gray-600">Invoice #: {invoice.invoice.invoiceNumber}</Text>
-                                    <Text className="text-gray-600">Date: {invoice.invoice.date}</Text>
-                                    <Text className="text-gray-600">Due Date: {invoice.invoice.dueDate}</Text>
                                 </View>
                             </View>
                         </>
