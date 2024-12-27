@@ -5,28 +5,15 @@ import { router } from 'expo-router';
 import React from 'react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { z } from 'zod';
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
 import CustomTextInput from '~/components/CustomTextInput';
 import { KeyboardAvoidingScrollView } from '~/components/KeyboardAvoidingScrollView';
-
-const itemsInfoSchema = z.object({
-  name: z.string({ required_error: 'Name is required' }).min(1, 'Name is required'),
-  description: z.string({ required_error: 'Description is required' }).min(1, 'Description is required'),
-  quantity: z.number({ required_error: 'Quantity is required' }).min(1, 'Quantity is required'),
-  price: z.number({ required_error: 'Price is required' }).min(1, 'Price is required'),
-});
-
-type InvoiceItem = z.infer<typeof itemsInfoSchema>
-
-const itemsSchema = z.object({
-  items: itemsInfoSchema.array(),
-});
-
-type ItemsInfo = z.infer<typeof itemsSchema>
+import { ItemsInfo, itemsSchema } from '~/schema/invoice';
+import { useStore } from '~/store/store';
 
 const ItemsInfoScreen = ({ }) => {
+  const addItemsInfo = useStore(data => data.addItemsInfo);
   const form = useForm<ItemsInfo>({
     resolver: zodResolver(itemsSchema), defaultValues: {
       items: [
@@ -52,6 +39,7 @@ const ItemsInfoScreen = ({ }) => {
 
   const onSubmit = (data: any) => {
     router.push('/invoices/generate/summary');
+    addItemsInfo(data.items);
   }
 
   return (
@@ -86,8 +74,8 @@ const ItemsInfoScreen = ({ }) => {
                   </View>
                   <View className='flex-row items-center justify-between mb-5'>
                     <View className='flex-row gap-4'>
-                      <Text className='font-bold text-xl'>Total:</Text>
-                      <Text className='font-bold text-xl'>$ {((!isNaN(form.watch(`items.${index}.price`)) ? form.watch(`items.${index}.price`) : 0) * (!isNaN(form.watch(`items.${index}.quantity`)) ? form.watch(`items.${index}.quantity`) : 0)).toFixed(2)}</Text>
+                      <Text className='font-bold text-lg'>Total:</Text>
+                      <Text className='font-bold text-lg'>$ {((!isNaN(form.watch(`items.${index}.price`)) ? form.watch(`items.${index}.price`) : 0) * (!isNaN(form.watch(`items.${index}.quantity`)) ? form.watch(`items.${index}.quantity`) : 0)).toFixed(2)}</Text>
                     </View>
                     <TouchableOpacity onPress={() => remove(index)}>
                       <AntDesign name="minuscircleo" size={24} color="red" />

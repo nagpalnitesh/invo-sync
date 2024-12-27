@@ -4,24 +4,16 @@ import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { z } from 'zod';
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
 import CustomTextInput from '~/components/CustomTextInput';
 import { KeyboardAvoidingScrollView } from '~/components/KeyboardAvoidingScrollView';
-
-const senderInfoSchema = z.object({
-  senderName: z.string({ required_error: 'Name is required' }).min(1, 'Name is required'),
-  address: z.string({ required_error: 'Address is required' }).min(1, 'Address is required'),
-  phone: z.string({ required_error: 'Phone number is required' }).min(1, 'Phone number is required'),
-  email: z.string({ required_error: 'Email address is required' }).email('Invalid email address').min(1, 'Email address is required'),
-  taxId: z.string().optional(),
-});
-
-type SenderInfo = z.infer<typeof senderInfoSchema>
+import { BusinessEntity, businessInfoSchema } from '~/schema/invoice';
+import { useStore } from '~/store/store';
 
 const SenderInfoScreen = ({ }) => {
-  const form = useForm<SenderInfo>({ resolver: zodResolver(senderInfoSchema), defaultValues: { senderName: 'Nitesh Nagpal', address: '123 Main Street', phone: '+91 987654321', email: 'nitesh@100x.dev', taxId: '1234567890' } });
+  const addSenderInfo = useStore(data => data.addSenderInfo);
+  const form = useForm<BusinessEntity>({ resolver: zodResolver(businessInfoSchema), defaultValues: { senderName: 'Nitesh Nagpal', address: '123 Main Street', phone: '+91 987654321', email: 'nitesh@100x.dev', taxId: '1234567890' } });
   const { handleSubmit } = form
 
   const [senderName, setSenderName] = useState('');
@@ -30,20 +22,9 @@ const SenderInfoScreen = ({ }) => {
   const [email, setEmail] = useState('');
   const [taxId, setTaxId] = useState('');
 
-  const handleNext = () => {
-    // Validate inputs (e.g., check if fields are empty or invalid)
-    if (!senderName || !address || !phone || !email) {
-      alert('Please fill all fields');
-      return;
-    }
-    // Pass data to the next screen or save it in global state
-    // navigation.navigate('ClientInfo', {
-    //   senderInfo: { senderName, address, phone, email },
-    // });
-  };
-
   const onSubmit = (data: any) => {
     router.push('/invoices/generate/recipient');
+    addSenderInfo(data);
   }
 
   return (
