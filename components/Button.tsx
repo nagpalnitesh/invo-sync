@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { Platform, Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 
 type ButtonVariant = 'primary' | 'secondary' | 'link';
 
@@ -28,7 +28,7 @@ export const Button = forwardRef<View, ButtonProps>(({ title, variant = 'primary
     <TouchableOpacity
       ref={ref}
       {...touchableProps}
-      className={`${variantStyles[variant].button} ${touchableProps.className}`}>
+      className={`${variantStyles[variant].button} ${touchableProps.className} ${Platform.OS === 'android' ? 'mb-5' : ''}`}>
       <Text className={variantStyles[variant].buttonText}>{title}</Text>
     </TouchableOpacity>
   );
