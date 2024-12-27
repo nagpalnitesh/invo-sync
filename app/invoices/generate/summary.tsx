@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { useStore } from '~/store/store';
 import { Button } from '../../../components/Button';
@@ -28,45 +29,53 @@ const SummaryScreen = () => {
 
                     {/* Sender Info Card */}
                     {invoice.sender && (
-                        <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
-                            <Text className="text-xl font-bold mb-2">Sender Information</Text>
-                            <View className="gap-1">
-                                <Text className="text-gray-600">{invoice.sender.senderName}</Text>
-                                <Text className="text-gray-600">{invoice.sender.phone}</Text>
-                                <Text className="text-gray-600">{invoice.sender.address}</Text>
-                                <Text className="text-gray-600">{invoice.sender.email}</Text>
-                                <Text className="text-gray-600">{invoice.sender.taxId}</Text>
+                        <>
+                            <Text className="text-xl font-bold mb-2 color-slate-500">Sender Information</Text>
+                            <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                                <View className="gap-1">
+                                    <Text className="text-gray-600">{invoice.sender.senderName}</Text>
+                                    <Text className="text-gray-600">{invoice.sender.phone}</Text>
+                                    <Text className="text-gray-600">{invoice.sender.address}</Text>
+                                    <Text className="text-gray-600">{invoice.sender.email}</Text>
+                                    <Text className="text-gray-600">{invoice.sender.taxId}</Text>
+                                </View>
                             </View>
-                        </View>
+                        </>
                     )}
 
                     {/* Recipient Info Card */}
                     {invoice.recipient && (
-                        <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
-                            <Text className="text-xl font-bold mb-2">Recipient Information</Text>
-                            <View className="gap-1">
-                                <Text className="text-gray-600">{invoice.recipient.senderName}</Text>
-                                <Text className="text-gray-600">{invoice.recipient.phone}</Text>
-                                <Text className="text-gray-600">{invoice.recipient.address}</Text>
-                                <Text className="text-gray-600">{invoice.recipient.email}</Text>
-                                <Text className="text-gray-600">{invoice.recipient.taxId}</Text>
+                        <>
+                            <Text className="text-xl font-bold mb-2 color-slate-500">Recipient Information</Text>
+                            <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                                <View className="gap-1">
+                                    <Text className="text-gray-600">{invoice.recipient.senderName}</Text>
+                                    <Text className="text-gray-600">{invoice.recipient.phone}</Text>
+                                    <Text className="text-gray-600">{invoice.recipient.address}</Text>
+                                    <Text className="text-gray-600">{invoice.recipient.email}</Text>
+                                    <Text className="text-gray-600">{invoice.recipient.taxId}</Text>
+                                </View>
                             </View>
-                        </View>
+                        </>
                     )}
 
                     {/* Invoice Details Card */}
-                    {invoice.invoice && (<View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
-                        <Text className="text-xl font-bold mb-2">Invoice Details</Text>
-                        <View className="gap-1">
-                            <Text className="text-gray-600">Invoice #: {invoice.invoice.invoiceNumber}</Text>
-                            <Text className="text-gray-600">Date: {invoice.invoice.date}</Text>
-                            <Text className="text-gray-600">Due Date: {invoice.invoice.dueDate}</Text>
-                        </View>
-                    </View>)}
+                    {invoice.invoice && (
+                        <>
+                            <Text className="text-xl font-bold mb-2 color-slate-500">Invoice Details</Text>
+                            <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                                <View className="gap-1">
+                                    <Text className="text-gray-600">Invoice #: {invoice.invoice.invoiceNumber}</Text>
+                                    <Text className="text-gray-600">Date: {invoice.invoice.date}</Text>
+                                    <Text className="text-gray-600">Due Date: {invoice.invoice.dueDate}</Text>
+                                </View>
+                            </View>
+                        </>
+                    )}
 
                     {/* Items Card */}
+                    <Text className="text-xl font-bold mb-2 color-slate-500">Items</Text>
                     <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
-                        <Text className="text-xl font-bold mb-2">Items</Text>
                         <View className="gap-3">
                             {/* Header row */}
                             <View className="flex-row justify-between mb-2">
@@ -94,8 +103,8 @@ const SummaryScreen = () => {
                     </View>
 
                     {/* Totals Card */}
+                    <Text className="text-xl font-bold mb-2 color-slate-500">Totals</Text>
                     <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
-                        <Text className="text-xl font-bold mb-2">Totals</Text>
                         <View className="gap-2">
                             <View className="flex-row justify-between">
                                 <Text className="text-gray-600">Subtotal</Text>
