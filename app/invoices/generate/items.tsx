@@ -51,7 +51,7 @@ const ItemsInfoScreen = ({ }) => {
   })
 
   const onSubmit = (data: any) => {
-    router.push('/invoices/generate/recipient');
+    router.push('/invoices/generate/summary');
   }
 
   return (
@@ -98,8 +98,8 @@ const ItemsInfoScreen = ({ }) => {
               <Button title='Add Item' variant='link' className='mt-5 w-5/6 mx-auto' onPress={() => append({ name: '', description: '', quantity: 0, price: 0 })} />
             </FormProvider>
           </View>
-          <Button title='Next' className='mt-auto w-5/6 mx-auto' onPress={form.handleSubmit(onSubmit)} />
         </KeyboardAvoidingScrollView>
+        <Button title='Next' className='mt-5 w-5/6 mx-auto' onPress={form.handleSubmit(onSubmit)} />
       </Container>
     </>
   );
