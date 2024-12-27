@@ -13,16 +13,16 @@ export type InvoiceState = {
 
 export const useStore = create<InvoiceState>((set, get) => ({
     newInvoice: {},
-    addSenderInfo: (sender) => set((state) => ({newInvoice: {...state.newInvoice, sender}})),
-    addRecipientInfo: (recipient) => set((state) => ({newInvoice: {...state.newInvoice, recipient}})),
-    addInvoiceInfo: (invoice: any) => set((state) => ({newInvoice: {...state.newInvoice, invoice}})),
-    addItemsInfo: (items: any) => set((state) => ({newInvoice: {...state.newInvoice, items}})),
+    addSenderInfo: (sender) => set((state) => ({ newInvoice: { ...state.newInvoice, sender } })),
+    addRecipientInfo: (recipient) => set((state) => ({ newInvoice: { ...state.newInvoice, recipient } })),
+    addInvoiceInfo: (invoice: any) => set((state) => ({ newInvoice: { ...state.newInvoice, invoice } })),
+    addItemsInfo: (items: any) => set((state) => ({ newInvoice: { ...state.newInvoice, items } })),
     getSubTotal: () => {
-        const items = get().newInvoice.items || [];
+        const items = (get().newInvoice?.items || []) as { name: string; description: string; quantity: number; price: number; }[];
         return items.reduce((acc, item) => acc + item.price * item.quantity, 0);
     },
-    getTotal: () =>{
+    getTotal: () => {
         const subTotal = get().getSubTotal();
-        return subTotal ;
+        return subTotal;
     }
 }));
