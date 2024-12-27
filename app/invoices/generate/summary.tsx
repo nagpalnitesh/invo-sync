@@ -121,7 +121,7 @@ const SummaryScreen = () => {
 
             <Button
                 title="Generate Invoice"
-                className="mt-5 w-5/6 mx-auto mb-5"
+                className="mt-5 w-5/6 mx-auto"
                 onPress={() => {
                     // Handle invoice generation
                 }}
