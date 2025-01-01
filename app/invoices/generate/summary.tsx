@@ -18,6 +18,12 @@ const SummaryScreen = () => {
         generateInvoicePDF()
     }
 
+    const formatNumber = (number: number) => {
+        return new Intl.NumberFormat('en-US', {
+            minimumIntegerDigits: 2,
+        }).format(number);
+    }
+
     return (
         <Container>
             <KeyboardAvoidingScrollView>
@@ -98,7 +104,7 @@ const SummaryScreen = () => {
                                             <Text className="font-semibold">{item.name}</Text>
                                             <Text className="text-gray-600 text-sm">{item.description}</Text>
                                         </View>
-                                        <Text className="w-16 text-center">{item.quantity}</Text>
+                                        <Text className="w-16 text-center">{formatNumber(item.quantity)}</Text>
                                         <Text className="w-20 text-center">${(item.price).toFixed(2)}</Text>
                                         <Text className="w-20 text-center">${(item.price * item.quantity).toFixed(2)}</Text>
                                     </View>
