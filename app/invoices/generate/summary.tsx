@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { useStore } from '~/store/store';
+import { generateInvoicePDF } from '~/utils/pdf';
 import { Button } from '../../../components/Button';
 import { Container } from '../../../components/Container';
 import { KeyboardAvoidingScrollView } from '../../../components/KeyboardAvoidingScrollView';
@@ -12,6 +13,10 @@ const SummaryScreen = () => {
     const invoice = useStore(data => data.newInvoice);
     const subtotal = useStore(data => data.getSubTotal());
     const total = useStore(data => data.getTotal());
+
+    const downloadPDF = () => {
+        generateInvoicePDF()
+    }
 
     return (
         <Container>
@@ -124,6 +129,7 @@ const SummaryScreen = () => {
                 className="mt-5 w-5/6 mx-auto"
                 onPress={() => {
                     // Handle invoice generation
+                    downloadPDF();
                 }}
             />
         </Container>
