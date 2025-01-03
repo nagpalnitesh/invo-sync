@@ -4,8 +4,8 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web"
   },
   "dependencies": {
@@ -21,7 +21,9 @@
     "zustand": "^5.0.2",
     "expo-print": "~14.0.2",
     "expo-sharing": "~13.0.0",
-    "expo-file-system": "~18.0.6"
+    "expo-file-system": "~18.0.6",
+    "expo-dev-client": "~5.0.8",
+    "react-native-safe-area-context": "4.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -33,5 +35,12 @@
     "extends": "universe/native",
     "root": true
   },
-  "private": true
+  "private": true,
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
+    }
+  }
 }
