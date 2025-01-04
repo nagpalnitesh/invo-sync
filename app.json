@@ -35,6 +35,16 @@
       "eas": {
         "projectId": "8664bc4a-c7ee-421c-ad56-b5e561d15216"
       }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.niteshnagpal.invosync"
+    },
+    "ios": {
+      "bundleIdentifier": "com.niteshnagpal.invosync"
     }
   }
 }
