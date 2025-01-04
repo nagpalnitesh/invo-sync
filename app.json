@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "invo-sync",
+    "name": "InvoSync",
     "slug": "invo-sync",
     "version": "1.0.0",
     "scheme": "invosync",
@@ -8,7 +8,7 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/logo2.png"
+      "favicon": "./assets/logo.png"
     },
     "plugins": [
       "expo-router"
@@ -18,10 +18,10 @@
       "tsconfigPaths": true
     },
     "orientation": "portrait",
-    "icon": "./assets/logo2.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/logo2.png",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -34,7 +34,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo2.png",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.niteshnagpal.invosync"

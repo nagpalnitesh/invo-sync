@@ -3,7 +3,6 @@ import {
     KeyboardAvoidingView,
     KeyboardAvoidingViewProps,
     Platform,
-    SafeAreaView,
     ScrollView,
     ScrollViewProps
 } from 'react-native';
@@ -32,14 +31,15 @@ export const KeyboardAvoidingScrollView: React.FC<KeyboardAvoidingScrollViewProp
                 contentContainerStyle={{
                     flexGrow: 1,
                     padding: 10,
-                    gap: 5
+                    gap: 5,
+                    backgroundColor: 'red'
                 }}
                 style={{ flex: 1 }}
             >
 
-                <SafeAreaView className='flex-1 bg-zinc-900/2'>
-                    {children}
-                </SafeAreaView>
+                {/* <SafeAreaView className='flex-1 bg-zinc-900/2'> */}
+                {children}
+                {/* </SafeAreaView> */}
             </ScrollView>
         </KeyboardAvoidingView>
     );

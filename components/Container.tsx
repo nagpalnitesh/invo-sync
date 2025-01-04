@@ -1,3 +1,4 @@
+import React from 'react';
 import { Platform, SafeAreaView, StatusBar } from 'react-native';
 
 const safeAreaStyle = {
