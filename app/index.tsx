@@ -17,7 +17,7 @@ export default function Page() {
           </View>
           <View>
             <Text className="text-2xl text-gray-900 font-semibold">Welcome, Guest</Text>
-            <Text className='text-sm text-gray-900/70'>Happy Invoicing!</Text>
+            <Text className='text-sm text-gray-900/70 px-1'>Happy Invoicing!</Text>
           </View>
         </View>
         <View className='gap-5 p-2'>

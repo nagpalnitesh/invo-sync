@@ -32,7 +32,6 @@ export const KeyboardAvoidingScrollView: React.FC<KeyboardAvoidingScrollViewProp
                     flexGrow: 1,
                     padding: 10,
                     gap: 5,
-                    backgroundColor: 'red'
                 }}
                 style={{ flex: 1 }}
             >
