@@ -3,12 +3,28 @@
     "name": "InvoSync",
     "slug": "invo-sync",
     "version": "1.0.0",
+    "scheme": "invosync",
     "newArchEnabled": true,
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/logo.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
     },
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "assetBundlePatterns": [
       "**/*"
     ],
