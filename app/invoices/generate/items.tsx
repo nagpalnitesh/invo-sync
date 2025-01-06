@@ -49,17 +49,17 @@ const ItemsInfoScreen = ({ }) => {
           <View className="mb-5">
             <View className="flex flex-row justify-between items-center mb-5">
               <TouchableOpacity onPress={() => router.back()}>
-                <Ionicons name="chevron-back-circle-outline" size={28} color="black" className='' />
+                <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='' />
               </TouchableOpacity>
               {/* <Button title='Back' className='mt-5 w-1/6 mx-auto' onPress={() => router.back()} /> */}
-              <Text className="text-3xl font-bold text-gray-900 text-center">
+              <Text className="text-3xl font-bold text-dark text-center">
                 Items
               </Text>
-              <Ionicons name="chevron-back-circle-outline" size={28} color="black" className='opacity-0' />
+              <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='opacity-0' />
             </View>
             <FormProvider {...form}>
               {fields.map((field, index) => (
-                <View key={field.id} className='gap-2 mb-2 p-4 rounded-lg bg-white'>
+                <View key={field.id} className='gap-2 mb-2 p-4 rounded-lg bg-light'>
                   <CustomTextInput name={`items.${index}.name`} label='Name' placeholder='Enter name' />
                   <CustomTextInput name={`items.${index}.description`} label='Description' placeholder='Enter description' multiline />
                   <View className='flex-row items-center gap-2'>

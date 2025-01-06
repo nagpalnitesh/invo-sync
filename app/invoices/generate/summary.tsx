@@ -30,19 +30,19 @@ const SummaryScreen = () => {
                 <View className="mb-5 gap-2">
                     <View className="flex flex-row justify-between items-center mb-5">
                         <TouchableOpacity onPress={() => router.back()}>
-                            <Ionicons name="chevron-back-circle-outline" size={28} color="black" />
+                            <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" />
                         </TouchableOpacity>
-                        <Text className="text-3xl font-bold text-gray-900 text-center">
+                        <Text className="text-3xl font-bold text-dark text-center">
                             Summary
                         </Text>
-                        <Ionicons name="chevron-back-circle-outline" size={28} color="black" className="opacity-0" />
+                        <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className="opacity-0" />
                     </View>
 
                     {/* Invoice Details Card */}
                     {invoice.invoice && (
                         <>
                             <Text className="text-xl font-bold mb-2 color-slate-500">Invoice Details</Text>
-                            <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                            <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
                                 <View className="gap-1">
                                     <Text className="text-gray-600">Invoice #: {invoice.invoice.invoiceNumber}</Text>
                                     <Text className="text-gray-600">Date: {invoice.invoice.date}</Text>
@@ -56,7 +56,7 @@ const SummaryScreen = () => {
                     {invoice.sender && (
                         <>
                             <Text className="text-xl font-bold mb-2 color-slate-500">Sender Information</Text>
-                            <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                            <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
                                 <View className="gap-1">
                                     <Text className="text-gray-600">{invoice.sender.senderName}</Text>
                                     <Text className="text-gray-600">{invoice.sender.phone}</Text>
@@ -72,7 +72,7 @@ const SummaryScreen = () => {
                     {invoice.recipient && (
                         <>
                             <Text className="text-xl font-bold mb-2 color-slate-500">Recipient Information</Text>
-                            <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                            <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
                                 <View className="gap-1">
                                     <Text className="text-gray-600">{invoice.recipient.senderName}</Text>
                                     <Text className="text-gray-600">{invoice.recipient.phone}</Text>
@@ -86,7 +86,7 @@ const SummaryScreen = () => {
 
                     {/* Items Card */}
                     <Text className="text-xl font-bold mb-2 color-slate-500">Items</Text>
-                    <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                    <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
                         <View className="gap-3">
                             {/* Header row */}
                             <View className="flex-row justify-between mb-2">
@@ -115,7 +115,7 @@ const SummaryScreen = () => {
 
                     {/* Totals Card */}
                     <Text className="text-xl font-bold mb-2 color-slate-500">Totals</Text>
-                    <View className="bg-white p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                    <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
                         <View className="gap-2">
                             <View className="flex-row justify-between">
                                 <Text className="text-gray-600">Subtotal</Text>

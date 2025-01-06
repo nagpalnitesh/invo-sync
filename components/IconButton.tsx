@@ -9,9 +9,9 @@ const IconButton = ({ onPress, children, icon }: { onPress: () => void; children
             <TouchableOpacity onPress={onPress}>
                 <View className='flex-col items-center'>
                     <View className='relative'>
-                        <FontAwesome6 name={icon} size={36} color="white" />
-                        <View className='absolute -bottom-1 -right-2 bg-white rounded-full'>
-                            <Ionicons name="add-circle-outline" size={15} color="black" />
+                        <FontAwesome6 name={icon} size={36} color="#F8FAFC" />
+                        <View className='absolute -bottom-1 -right-2 bg-light rounded-full'>
+                            <Ionicons name="add-circle-outline" size={15} color="#071739" />
                         </View>
                     </View>
                     <View className='items-center mt-3'>

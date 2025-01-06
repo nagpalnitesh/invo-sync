@@ -35,13 +35,13 @@ const InvoiceInfoScreen = ({ }) => {
           <View className="mb-5">
             <View className="flex flex-row justify-between items-center mb-5">
               <TouchableOpacity onPress={() => router.back()}>
-                <Ionicons name="chevron-back-circle-outline" size={28} color="black" className='' />
+                <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='' />
               </TouchableOpacity>
               {/* <Button title='Back' className='mt-5 w-1/6 mx-auto' onPress={() => router.back()} /> */}
-              <Text className="text-3xl font-bold text-gray-900 text-center">
+              <Text className="text-3xl font-bold text-dark text-center">
                 Invoice Info
               </Text>
-              <Ionicons name="chevron-back-circle-outline" size={28} color="black" className='opacity-0' />
+              <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='opacity-0' />
             </View>
             <FormProvider {...form}>
               <View className='gap-2'>
