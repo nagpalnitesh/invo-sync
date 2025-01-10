@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import Card from '~/components/Card';
 import { useStore } from '~/store/store';
 import { generateInvoicePDF } from '~/utils/pdf';
 import { Button } from '../../../components/Button';
@@ -42,13 +43,13 @@ const SummaryScreen = () => {
                     {invoice.invoice && (
                         <>
                             <Text className="text-xl font-bold mb-2 color-slate-500">Invoice Details</Text>
-                            <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                            <Card className="bg-light mb-4">
                                 <View className="gap-1">
                                     <Text className="text-gray-600">Invoice #: {invoice.invoice.invoiceNumber}</Text>
                                     <Text className="text-gray-600">Date: {invoice.invoice.date}</Text>
                                     <Text className="text-gray-600">Due Date: {invoice.invoice.dueDate}</Text>
                                 </View>
-                            </View>
+                            </Card>
                         </>
                     )}
 
@@ -56,7 +57,7 @@ const SummaryScreen = () => {
                     {invoice.sender && (
                         <>
                             <Text className="text-xl font-bold mb-2 color-slate-500">Sender Information</Text>
-                            <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                            <Card className="bg-light mb-4">
                                 <View className="gap-1">
                                     <Text className="text-gray-600">{invoice.sender.senderName}</Text>
                                     <Text className="text-gray-600">{invoice.sender.phone}</Text>
@@ -64,7 +65,7 @@ const SummaryScreen = () => {
                                     <Text className="text-gray-600">{invoice.sender.email}</Text>
                                     <Text className="text-gray-600">{invoice.sender.taxId}</Text>
                                 </View>
-                            </View>
+                            </Card>
                         </>
                     )}
 
@@ -72,7 +73,7 @@ const SummaryScreen = () => {
                     {invoice.recipient && (
                         <>
                             <Text className="text-xl font-bold mb-2 color-slate-500">Recipient Information</Text>
-                            <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                            <Card className="bg-light mb-4">
                                 <View className="gap-1">
                                     <Text className="text-gray-600">{invoice.recipient.senderName}</Text>
                                     <Text className="text-gray-600">{invoice.recipient.phone}</Text>
@@ -80,13 +81,13 @@ const SummaryScreen = () => {
                                     <Text className="text-gray-600">{invoice.recipient.email}</Text>
                                     <Text className="text-gray-600">{invoice.recipient.taxId}</Text>
                                 </View>
-                            </View>
+                            </Card>
                         </>
                     )}
 
                     {/* Items Card */}
                     <Text className="text-xl font-bold mb-2 color-slate-500">Items</Text>
-                    <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                    <Card className="bg-light mb-4">
                         <View className="gap-3">
                             {/* Header row */}
                             <View className="flex-row justify-between mb-2">
@@ -111,11 +112,11 @@ const SummaryScreen = () => {
                                 </View>
                             ))}
                         </View>
-                    </View>
+                    </Card>
 
                     {/* Totals Card */}
                     <Text className="text-xl font-bold mb-2 color-slate-500">Totals</Text>
-                    <View className="bg-light p-4 rounded-lg mb-4 shadow shadow-gray-500/30">
+                    <Card className="bg-light mb-4">
                         <View className="gap-2">
                             <View className="flex-row justify-between">
                                 <Text className="text-gray-600">Subtotal</Text>
@@ -126,7 +127,7 @@ const SummaryScreen = () => {
                                 <Text className="font-bold text-lg">${total.toFixed(2)}</Text>
                             </View>
                         </View>
-                    </View>
+                    </Card>
                 </View>
             </KeyboardAvoidingScrollView>
 
