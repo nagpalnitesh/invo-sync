@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import Card from '~/components/Card';
+import { Invoice } from '~/schema/invoice';
 import { useStore } from '~/store/store';
 import { generateInvoicePDF } from '~/utils/pdf';
 import { Button } from '../../../components/Button';
@@ -11,12 +12,12 @@ import { KeyboardAvoidingScrollView } from '../../../components/KeyboardAvoiding
 
 const SummaryScreen = () => {
     const router = useRouter();
-    const invoice = useStore(data => data.newInvoice);
+    const invoice = useStore(data => data.newInvoice) as Invoice;
     const subtotal = useStore(data => data.getSubTotal());
     const total = useStore(data => data.getTotal());
 
-    const downloadPDF = () => {
-        generateInvoicePDF()
+    const downloadPDF = (invoice: Invoice) => {
+        generateInvoicePDF(invoice)
     }
 
     const formatNumber = (number: number) => {
@@ -136,7 +137,7 @@ const SummaryScreen = () => {
                 className="mt-5 w-5/6 mx-auto"
                 onPress={() => {
                     // Handle invoice generation
-                    downloadPDF();
+                    downloadPDF(invoice);
                 }}
             />
         </Container>
