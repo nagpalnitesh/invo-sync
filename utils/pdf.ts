@@ -8,11 +8,6 @@ const generateInvoiceHTML = (invoiceData: Invoice) => {
 
   const {invoice, items, sender, recipient} = invoiceData
 
-  console.log('invoice' ,invoice)
-  console.log('items' ,items)
-  console.log('sender' ,sender)
-  console.log('recipient' ,recipient)
-
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
