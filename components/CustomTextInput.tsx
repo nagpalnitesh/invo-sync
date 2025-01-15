@@ -4,7 +4,7 @@ import { Text, TextInput, TextInputProps, View } from "react-native";
 
 type CustomTextInputProps = {
     name: string;
-    label: string;
+    label?: string;
 } & TextInputProps
 
 export default function CustomTextInput({ label, name, ...props }: CustomTextInputProps) {
@@ -12,9 +12,11 @@ export default function CustomTextInput({ label, name, ...props }: CustomTextInp
     return (
         <>
             <View className="gap-2">
-                <Text className="text-base font-semibold text-gray-700">
-                    {label}
-                </Text>
+                {label &&
+                    <Text className="text-base font-semibold text-gray-700">
+                        {label}
+                    </Text>
+                }
                 <TextInput {...props}
                     placeholderTextColor="#6B7280"
                     className="w-full bg-light border border-gray-200 rounded-lg p-4 text-dark focus:border-dark"
