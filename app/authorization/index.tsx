@@ -33,12 +33,14 @@ const Login = () => {
                         <View className='flex-row items-center gap-2 bg-light border border-gray-200 rounded-lg px-2'>
 
                             <View className='flex-1'>
-                                <TextInput className="w-full bg-light p-4 text-dark" placeholder='Enter your registered email' autoCapitalize='none' />
+                                <TextInput className="w-full bg-light p-4 text-dark" placeholder='Enter your registered email' autoCapitalize='none'
+                                    placeholderTextColor="#6B7280" />
                             </View>
                         </View>
                         <View className='flex-row items-center gap-2 bg-light border border-gray-200 rounded-lg px-2'>
                             <View className='flex-1'>
-                                <TextInput className="w-full bg-light p-4 text-dark" placeholder='Enter your password' secureTextEntry={!isPasswordVisible} />
+                                <TextInput className="w-full bg-light p-4 text-dark"
+                                    placeholderTextColor="#6B7280" placeholder='Enter your password' secureTextEntry={!isPasswordVisible} />
                             </View>
                             <View className=''>
                                 {!isPasswordVisible &&
