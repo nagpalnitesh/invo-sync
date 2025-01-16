@@ -29,7 +29,7 @@ const SummaryScreen = () => {
     return (
         <Container>
             <KeyboardAvoidingScrollView>
-                <View className="mb-5 gap-2">
+                <View className="mb-5 gap-2 p-2">
                     <View className="flex flex-row justify-between items-center mb-5">
                         <TouchableOpacity onPress={() => router.back()}>
                             <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" />
@@ -43,12 +43,12 @@ const SummaryScreen = () => {
                     {/* Invoice Details Card */}
                     {invoice.invoice && (
                         <>
-                            <Text className="text-xl font-bold mb-2 color-slate-500">Invoice Details</Text>
+                            <Text className="text-xl font-bold text-gray-600 uppercase px-4 pb-2">Invoice Details</Text>
                             <Card className="bg-light mb-4">
                                 <View className="gap-1">
-                                    <Text className="text-gray-600">Invoice #: {invoice.invoice.invoiceNumber}</Text>
-                                    <Text className="text-gray-600">Date: {invoice.invoice.date}</Text>
-                                    <Text className="text-gray-600">Due Date: {invoice.invoice.dueDate}</Text>
+                                    <Text className="text-dark text-lg">Invoice #: {invoice.invoice.invoiceNumber}</Text>
+                                    <Text className="text-dark text-lg">Date: {invoice.invoice.date}</Text>
+                                    <Text className="text-dark text-lg">Due Date: {invoice.invoice.dueDate}</Text>
                                 </View>
                             </Card>
                         </>
@@ -57,14 +57,14 @@ const SummaryScreen = () => {
                     {/* Sender Info Card */}
                     {invoice.sender && (
                         <>
-                            <Text className="text-xl font-bold mb-2 color-slate-500">Sender Information</Text>
+                            <Text className="text-xl font-bold text-gray-600 uppercase px-4 pb-2">Sender Information</Text>
                             <Card className="bg-light mb-4">
                                 <View className="gap-1">
-                                    <Text className="text-gray-600">{invoice.sender.senderName}</Text>
-                                    <Text className="text-gray-600">{invoice.sender.phone}</Text>
-                                    <Text className="text-gray-600">{invoice.sender.address}</Text>
-                                    <Text className="text-gray-600">{invoice.sender.email}</Text>
-                                    <Text className="text-gray-600">{invoice.sender.taxId}</Text>
+                                    <Text className="text-dark text-lg">{invoice.sender.senderName}</Text>
+                                    <Text className="text-dark text-lg">{invoice.sender.phone}</Text>
+                                    <Text className="text-dark text-lg">{invoice.sender.address}</Text>
+                                    <Text className="text-dark text-lg">{invoice.sender.email}</Text>
+                                    <Text className="text-dark text-lg">{invoice.sender.taxId}</Text>
                                 </View>
                             </Card>
                         </>
@@ -73,29 +73,29 @@ const SummaryScreen = () => {
                     {/* Recipient Info Card */}
                     {invoice.recipient && (
                         <>
-                            <Text className="text-xl font-bold mb-2 color-slate-500">Recipient Information</Text>
+                            <Text className="text-xl font-bold text-gray-600 uppercase px-4 pb-2">Recipient Information</Text>
                             <Card className="bg-light mb-4">
                                 <View className="gap-1">
-                                    <Text className="text-gray-600">{invoice.recipient.senderName}</Text>
-                                    <Text className="text-gray-600">{invoice.recipient.phone}</Text>
-                                    <Text className="text-gray-600">{invoice.recipient.address}</Text>
-                                    <Text className="text-gray-600">{invoice.recipient.email}</Text>
-                                    <Text className="text-gray-600">{invoice.recipient.taxId}</Text>
+                                    <Text className="text-dark text-lg">{invoice.recipient.senderName}</Text>
+                                    <Text className="text-dark text-lg">{invoice.recipient.phone}</Text>
+                                    <Text className="text-dark text-lg">{invoice.recipient.address}</Text>
+                                    <Text className="text-dark text-lg">{invoice.recipient.email}</Text>
+                                    <Text className="text-dark text-lg">{invoice.recipient.taxId}</Text>
                                 </View>
                             </Card>
                         </>
                     )}
 
                     {/* Items Card */}
-                    <Text className="text-xl font-bold mb-2 color-slate-500">Items</Text>
+                    <Text className="text-xl font-bold text-gray-600 uppercase px-4 pb-2">Items</Text>
                     <Card className="bg-light mb-4">
                         <View className="gap-3">
                             {/* Header row */}
                             <View className="flex-row justify-between mb-2">
-                                <Text className="font-semibold flex-1">Item</Text>
-                                <Text className="font-semibold w-16 text-center">Qty</Text>
-                                <Text className="font-semibold w-20 text-center">Price</Text>
-                                <Text className="font-semibold w-20 text-center">Total</Text>
+                                <Text className="font-semibold text-lg flex-1">Item</Text>
+                                <Text className="font-semibold text-lg w-16 text-center">Qty</Text>
+                                <Text className="font-semibold text-lg w-20 text-center">Price</Text>
+                                <Text className="font-semibold text-lg w-20 text-center">Total</Text>
                             </View>
 
                             {/* Item rows */}
@@ -103,12 +103,12 @@ const SummaryScreen = () => {
                                 <View className="border-b border-gray-200 pb-2" key={index}>
                                     <View className="flex-row justify-between items-center">
                                         <View className="flex-1">
-                                            <Text className="font-semibold">{item.name}</Text>
-                                            <Text className="text-gray-600 text-sm">{item.description}</Text>
+                                            <Text className="font-semibold text-lg">{item.name}</Text>
+                                            <Text className="text-gray-500 text-sm">{item.description}</Text>
                                         </View>
-                                        <Text className="w-16 text-center">{formatNumber(item.quantity)}</Text>
-                                        <Text className="w-20 text-center">${(item.price).toFixed(2)}</Text>
-                                        <Text className="w-20 text-center">${(item.price * item.quantity).toFixed(2)}</Text>
+                                        <Text className="w-16 text-center text-lg">{formatNumber(item.quantity)}</Text>
+                                        <Text className="w-20 text-center text-lg">${(item.price).toFixed(2)}</Text>
+                                        <Text className="w-20 text-center text-lg">${(item.price * item.quantity).toFixed(2)}</Text>
                                     </View>
                                 </View>
                             ))}
@@ -116,12 +116,12 @@ const SummaryScreen = () => {
                     </Card>
 
                     {/* Totals Card */}
-                    <Text className="text-xl font-bold mb-2 color-slate-500">Totals</Text>
+                    <Text className="text-xl font-bold text-gray-600 uppercase px-4 pb-2">Totals</Text>
                     <Card className="bg-light mb-4">
                         <View className="gap-2">
                             <View className="flex-row justify-between">
-                                <Text className="text-gray-600">Subtotal</Text>
-                                <Text className="text-gray-600">${subtotal.toFixed(2)}</Text>
+                                <Text className="text-dark text-lg">Subtotal</Text>
+                                <Text className="text-dark text-lg">${subtotal.toFixed(2)}</Text>
                             </View>
                             <View className="flex-row justify-between mt-2">
                                 <Text className="font-bold text-lg">Total</Text>

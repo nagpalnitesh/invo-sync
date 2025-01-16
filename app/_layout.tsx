@@ -12,6 +12,7 @@ export default function RootLayout() {
       <StatusBar backgroundColor='red' style="dark" />
       <Stack>
         <Stack.Screen name='authorization' options={{ headerShown: false }} />
+        <Stack.Screen name='settings' options={{ headerShown: false }} />
         <Stack.Screen name='index' options={{ headerShown: false }} />
         <Stack.Screen name='dashboard' options={{ headerShown: false }} />
         <Stack.Screen name='invoices/generate' options={{ headerShown: false }} />

@@ -13,7 +13,7 @@ export default function CustomTextInput({ label, name, ...props }: CustomTextInp
         <>
             <View className="gap-2">
                 {label &&
-                    <Text className="text-base font-semibold text-gray-700">
+                    <Text className="font-semibold text-gray-700 text-lg">
                         {label}
                     </Text>
                 }

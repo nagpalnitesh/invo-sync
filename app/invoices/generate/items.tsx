@@ -61,7 +61,7 @@ const ItemsInfoScreen = ({ }) => {
             <View className='flex-col gap-5 p-2'>
               <FormProvider {...form}>
                 {fields.map((field, index) => (
-                  <Card key={field.id} className='bg-light my-2'>
+                  <Card key={field.id} className='bg-light my-4 p-5'>
                     <View>
                       <CustomTextInput name={`items.${index}.name`} label='Name' placeholder='Enter name' />
                       <CustomTextInput name={`items.${index}.description`} label='Description' placeholder='Enter description' multiline />

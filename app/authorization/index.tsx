@@ -62,7 +62,7 @@ const Login = () => {
                     </TouchableOpacity>
                 </View>
                 <View className='w-full'>
-                    <Button title='Login' variant='primary' className='mt-auto w-5/6 mx-auto' onPress={() => navigation.navigate('dashboard' as never)} />
+                    <Button title='Login' variant='primary' className='mt-auto w-5/6 mx-auto' onPress={() => navigation.navigate('settings' as never)} />
                 </View>
             </View>
             <View className='p-2 mb-3 w-5/6 m-auto'>
