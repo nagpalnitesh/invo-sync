@@ -2,7 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useNavigation } from 'expo-router';
 import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Image, Pressable, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, Linking, Pressable, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
 import '../../global.css';
@@ -33,13 +33,13 @@ const Login = () => {
                         <View className='flex-row items-center gap-2 bg-light border border-gray-200 rounded-lg px-2'>
 
                             <View className='flex-1'>
-                                <TextInput className="w-full bg-light p-4 text-dark" placeholder='Enter your registered email' autoCapitalize='none'
+                                <TextInput className="w-full bg-light p-4 text-dark text-lg leading-tight" placeholder='Enter your email' autoCapitalize='none'
                                     placeholderTextColor="#6B7280" />
                             </View>
                         </View>
                         <View className='flex-row items-center gap-2 bg-light border border-gray-200 rounded-lg px-2'>
                             <View className='flex-1'>
-                                <TextInput className="w-full bg-light p-4 text-dark"
+                                <TextInput className="w-full bg-light p-4 text-dark text-lg leading-tight"
                                     placeholderTextColor="#6B7280" placeholder='Enter your password' secureTextEntry={!isPasswordVisible} />
                             </View>
                             <View className=''>
@@ -56,14 +56,18 @@ const Login = () => {
                     </FormProvider>
                 </View>
                 <View className='flex-row justify-center items-center gap-1'>
-                    <Text className='text-xl text-dark font-normal'>Don't have an account?</Text>
+                    <Text className='text-lg text-dark font-normal'>Don't have an account?</Text>
                     <TouchableOpacity onPress={() => onSignup()} className=''>
-                        <Text className='text-dark text-xl font-bold text-center uppercase'>Signup</Text>
+                        <Text className='text-dark text-lg font-bold text-center'>Sign Up</Text>
                     </TouchableOpacity>
                 </View>
                 <View className='w-full'>
                     <Button title='Login' variant='primary' className='mt-auto w-5/6 mx-auto' onPress={() => navigation.navigate('dashboard' as never)} />
                 </View>
+            </View>
+            <View className='p-2 mb-3 w-5/6 m-auto'>
+                <Text className='text-base text-center text-dark'>By continuing, your are agreeing to our{" "}
+                    <Text className='text-blue-600' onPress={() => Linking.openURL('http://google.com')}>Terms of Use</Text>{" "}and{" "}<Text className='text-blue-600' onPress={() => Linking.openURL('http://google.com')}>Privacy Policy</Text></Text>
             </View>
         </Container>
     )
