@@ -2,14 +2,14 @@ import '../global.css';
 
 import 'expo-dev-client';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { StatusBar } from 'react-native';
 
 
 export default function RootLayout() {
   return (
     <>
-      <StatusBar backgroundColor='red' style="dark" />
+      <StatusBar  />
       <Stack>
         <Stack.Screen name='authorization' options={{ headerShown: false }} />
         <Stack.Screen name='settings' options={{ headerShown: false }} />
