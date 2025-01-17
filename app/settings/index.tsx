@@ -3,7 +3,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Linking, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Card from '~/components/Card';
 import { Container } from '~/components/Container';
 
@@ -11,7 +11,7 @@ const More = () => {
     const router = useRouter();
     return (
         <Container>
-            <View className="flex flex-row justify-between items-center p-2">
+            <View className="flex flex-row justify-between items-center px-2 pt-2">
                 <TouchableOpacity onPress={() => router.back()}>
                     <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" />
                 </TouchableOpacity>
@@ -31,7 +31,7 @@ const More = () => {
                                 </Text>
                             </View>
                             <Card className="bg-dark p-5 gap-5">
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/business-details')}>
                                     <View className="flex-row gap-2 items-center">
                                         <View>
                                             <MaterialIcons name="business" size={20} color="#F8FAFC" />
@@ -46,7 +46,7 @@ const More = () => {
                                     </View>
                                 </TouchableOpacity>
                                 <View className="w-10/12 mx-auto border-b border-gray-100/25" />
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/invoice-number')}>
                                     <View className="flex-row gap-2 items-center">
                                         <View>
                                             <MaterialIcons name="numbers" size={20} color="#F8FAFC" />
@@ -61,7 +61,7 @@ const More = () => {
                                     </View>
                                 </TouchableOpacity>
                                 {/* <View className="w-10/12 mx-auto border-b border-gray-100/25" />
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/business-details')}>
                                     <View className="flex-row gap-2 items-center">
                                         <View>
                                             <MaterialIcons name="numbers" size={20} color="#F8FAFC" />
@@ -75,7 +75,7 @@ const More = () => {
                                     </View>
                                 </TouchableOpacity> */}
                                 <View className="w-10/12 mx-auto border-b border-gray-100/25" />
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/default-notes')}>
                                     <View className="flex-row gap-2 items-center">
                                         <View>
                                             <MaterialIcons name="notes" size={20} color="#F8FAFC" />
@@ -98,7 +98,7 @@ const More = () => {
                                 </Text>
                             </View>
                             <Card className="bg-dark p-5 gap-5">
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/business-details')}>
                                     <View className="flex-row gap-2">
                                         <View>
                                             <MaterialIcons name="date-range" size={20} color="#F8FAFC" />
@@ -115,7 +115,7 @@ const More = () => {
                                     </View>
                                 </TouchableOpacity>
                                 <View className="w-10/12 mx-auto border-b border-gray-100/25" />
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/business-details')}>
                                     <View className="flex-row gap-2">
                                         <View>
                                             <MaterialIcons name="language" size={20} color="#F8FAFC" />
@@ -132,7 +132,7 @@ const More = () => {
                                     </View>
                                 </TouchableOpacity>
                                 <View className="w-10/12 mx-auto border-b border-gray-100/25" />
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/business-details')}>
                                     <View className="flex-row gap-2">
                                         <View>
                                             <MaterialIcons name="currency-exchange" size={20} color="#F8FAFC" />
@@ -149,7 +149,7 @@ const More = () => {
                                     </View>
                                 </TouchableOpacity>
                                 <View className="w-10/12 mx-auto border-b border-gray-100/25" />
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/business-details')}>
                                     <View className="flex-row gap-2 items-center">
                                         <View>
                                             <MaterialIcons name="percent" size={20} color="#F8FAFC" />
@@ -176,7 +176,7 @@ const More = () => {
                                 </Text>
                             </View>
                             <Card className="bg-dark p-5 gap-5">
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/business-details')}>
                                     <View className="flex-row gap-2">
                                         <View>
                                             <FontAwesome name="support" size={20} color="#F8FAFC" />
@@ -213,7 +213,7 @@ const More = () => {
                                 </Text>
                             </View>
                             <Card className="bg-dark p-5 gap-5">
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => router.push('/settings/business-details')}>
                                     <View className="flex-row gap-2 items-center">
                                         <View>
                                             <MaterialIcons name="info-outline" size={20} color="#F8FAFC" />
@@ -230,7 +230,7 @@ const More = () => {
                                     </View>
                                 </TouchableOpacity>
                                 <View className="w-10/12 mx-auto border-b border-gray-100/25" />
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => Linking.openURL('http://google.com')}>
                                     <View className="flex-row gap-2">
                                         <View>
                                             <MaterialIcons name="help-outline" size={20} color="#F8FAFC" />
@@ -244,7 +244,7 @@ const More = () => {
                                     </View>
                                 </TouchableOpacity>
                                 <View className="w-10/12 mx-auto border-b border-gray-100/25" />
-                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => { console.warn('Touch') }}>
+                                <TouchableOpacity className="flex-row justify-between items-center" onPress={() => Linking.openURL('http://google.com')}>
                                     <View className="flex-row gap-2">
                                         <View>
                                             <MaterialIcons name="privacy-tip" size={20} color="#F8FAFC" />
