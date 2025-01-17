@@ -9,7 +9,7 @@ const BusinessDetails = () => {
     const router = useRouter();
     return (
         <Container>
-            <View className="flex flex-row justify-between items-center px-2 pt-2">
+            <View className="flex flex-row justify-between items-center p-2">
                 <TouchableOpacity onPress={() => router.back()}>
                     <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" />
                 </TouchableOpacity>
