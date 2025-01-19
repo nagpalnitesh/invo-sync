@@ -41,6 +41,7 @@ const CustomDatePicker = ({ name, label, ...props }: CustomDatePickerProps) => {
                         className="w-full bg-light border border-gray-200 rounded-lg p-4 text-dark focus:border-dark text-lg leading-tight"
                         value={value ? new Date(value).toLocaleDateString() : 'Select Date'}
                         editable={false}
+                        onPressIn={() => showDatePicker()}
                     />
                 </Pressable>
                 <Text className="text-sm text-red-500">
