@@ -15,22 +15,10 @@ import { useStore } from '~/store/store';
 
 const ItemsInfoScreen = ({ }) => {
   const addItemsInfo = useStore(data => data.addItemsInfo);
+  const items = useStore(data => data.newInvoice?.items);
   const form = useForm<ItemsInfo>({
     resolver: zodResolver(itemsSchema), defaultValues: {
-      items: [
-        {
-          name: 'Example',
-          description: 'Example description',
-          quantity: 1,
-          price: 100.10,
-        },
-        {
-          name: 'Example 2',
-          description: 'Example description 2',
-          quantity: 2,
-          price: 200.5,
-        }
-      ]
+      items: items || []
     }
   });
   const { fields, append, remove } = useFieldArray({

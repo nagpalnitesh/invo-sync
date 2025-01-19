@@ -6,6 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
+import CustomDatePicker from '~/components/CustomDatePicker';
 import CustomTextInput from '~/components/CustomTextInput';
 import { KeyboardAvoidingScrollView } from '~/components/KeyboardAvoidingScrollView';
 import { InvoiceInfo, invoiceInfoSchema } from '~/schema/invoice';
@@ -13,15 +14,17 @@ import { useStore } from '~/store/store';
 
 const InvoiceInfoScreen = ({ }) => {
   const addInvoiceInfo = useStore(data => data.addInvoiceInfo);
+  const invoice = useStore(data => data.newInvoice);
   const form = useForm<InvoiceInfo>({
     resolver: zodResolver(invoiceInfoSchema),
     defaultValues: {
-      invoiceNumber: 'INV-123',
-      date: new Date().toISOString().split('T')[0],
-      dueDate: new Date(new Date().setDate(new Date().getDate() + 14)).toISOString().split('T')[0],
-      notes: 'Invoice notes here'
+      invoiceNumber: invoice?.invoiceNumber || 'INV-123',
+      date: invoice?.date,
+      dueDate: invoice?.dueDate,
+      notes: invoice?.notes || ''
     }
   });
+
 
   const onSubmit = (data: any) => {
     router.push('/invoices/generate/items');
@@ -48,15 +51,11 @@ const InvoiceInfoScreen = ({ }) => {
                 <CustomTextInput
                   name="invoiceNumber"
                   label="Invoice Number"
-                  placeholder="INV-123" editable={false} selectTextOnFocus={false} />
-                <CustomTextInput
-                  name="date"
-                  label="Date"
-                  placeholder="2023-01-01" />
-                <CustomTextInput
+                  placeholder="INV-123" selectTextOnFocus={false} />
+                <CustomDatePicker name="date" label="Invoice Date" />
+                <CustomDatePicker
                   name="dueDate"
-                  label="Due Date"
-                  placeholder="2023-01-01" />
+                  label="Invoice Due Date" />
                 <CustomTextInput
                   name="notes"
                   label="Notes"

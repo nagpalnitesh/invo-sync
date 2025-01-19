@@ -5,7 +5,7 @@ import { Invoice } from '~/schema/invoice';
 
 const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: number) => {
 
-    const { invoice, items, sender, recipient } = invoiceData
+    const { items, sender, recipient } = invoiceData
 
     const html = `<!DOCTYPE html>
 <html lang="en">
@@ -89,8 +89,8 @@ const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: numb
     <table>
         <tr>
             <td>
-                Invoice No.: ${invoice.invoiceNumber}<br>
-                Dated: ${invoice.date}<br>
+                Invoice No.: ${invoiceData.invoiceNumber}<br>
+                Dated: ${invoiceData.date}<br>
                 Place of Supply: Haryana (06)<br>
                 Reverse Charge: N<br>
                 Vehicle Owner:<br>
@@ -227,7 +227,7 @@ export const generateInvoicePDF = async (invoiceData: Invoice, subTotal: number,
         // On iOS/android prints the given html. On web prints the HTML from the current page.
         const { uri } = await Print.printToFileAsync({ html: generateInvoiceHTML(invoiceData, subTotal, total) });
 
-        const permanentUri = FileSystem.documentDirectory + `invoice-${invoiceData.invoice.invoiceNumber}.pdf`;
+        const permanentUri = FileSystem.documentDirectory + `invoice-${invoiceData.invoiceNumber}.pdf`;
 
         // move to documents directory
         await FileSystem.moveAsync({

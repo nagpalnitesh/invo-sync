@@ -1,11 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Link, useRouter } from 'expo-router';
+import { Link, Redirect, useRouter } from 'expo-router';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import Card from '~/components/Card';
 import { Invoice } from '~/schema/invoice';
 import { useStore } from '~/store/store';
-import { generateInvoicePDF } from '~/utils/pdf';
 import { Button } from '../../../components/Button';
 import { Container } from '../../../components/Container';
 import { KeyboardAvoidingScrollView } from '../../../components/KeyboardAvoidingScrollView';
@@ -15,6 +14,8 @@ const SummaryScreen = () => {
     const invoice = useStore(data => data.newInvoice) as Invoice;
     const subtotal = useStore(data => data.getSubTotal());
     const total = useStore(data => data.getTotal());
+
+    if (!invoice) return <Redirect href={'/'} />
 
 
     const formatNumber = (number: number) => {
@@ -38,14 +39,14 @@ const SummaryScreen = () => {
                     </View>
 
                     {/* Invoice Details Card */}
-                    {invoice.invoice && (
+                    {invoice && (
                         <>
                             <Text className="text-xl font-bold text-gray-600 uppercase px-4 pb-2">Invoice Details</Text>
                             <Card className="bg-light mb-4">
                                 <View className="gap-1">
-                                    <Text className="text-dark text-lg">Invoice #: {invoice.invoice.invoiceNumber}</Text>
-                                    <Text className="text-dark text-lg">Date: {invoice.invoice.date}</Text>
-                                    <Text className="text-dark text-lg">Due Date: {invoice.invoice.dueDate}</Text>
+                                    <Text className="text-dark text-lg">Invoice #: {invoice.invoiceNumber}</Text>
+                                    <Text className="text-dark text-lg">Date: {invoice.date?.toLocaleDateString()}</Text>
+                                    {invoice.dueDate && <Text className="text-dark text-lg">Due Date: {invoice.dueDate?.toLocaleDateString()}</Text>}
                                 </View>
                             </Card>
                         </>

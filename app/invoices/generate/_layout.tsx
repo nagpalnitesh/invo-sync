@@ -1,7 +1,22 @@
 import { Stack } from 'expo-router';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { ActivityIndicator } from 'react-native';
+import { useStore } from '~/store/store';
 
 const GenerateInvoiceLayout = () => {
+  const startNewInvoice = useStore(data => data.startNewInvoice);
+  const invoice = useStore(data => data.newInvoice);
+
+  useEffect(() => {
+    if (!invoice) {
+      startNewInvoice();
+    }
+  }, [])
+
+  if (!invoice) {
+    return <ActivityIndicator />
+  }
+
   return (
     <Stack>
       <Stack.Screen name='index' options={{ headerShown: false }} />

@@ -13,7 +13,17 @@ import { useStore } from '~/store/store';
 
 const SenderInfoScreen = ({ }) => {
   const addSenderInfo = useStore(data => data.addSenderInfo);
-  const form = useForm<BusinessEntity>({ resolver: zodResolver(businessInfoSchema), defaultValues: { senderName: 'Nitesh Nagpal', address: '123 Main Street', phone: '+91 987654321', email: 'nitesh@100x.dev', taxId: '1234567890' } });
+  const sender = useStore(data => data.newInvoice?.sender);
+  const form = useForm<BusinessEntity>({
+    resolver: zodResolver(businessInfoSchema),
+    defaultValues: {
+      senderName: sender?.senderName || 'a',
+      address: sender?.address || 'b',
+      phone: sender?.phone || 'c',
+      email: sender?.email || 'd@e.com',
+      taxId: sender?.taxId || 'f'
+    }
+  });
   const { handleSubmit } = form
 
   const [senderName, setSenderName] = useState('');
@@ -43,7 +53,7 @@ const SenderInfoScreen = ({ }) => {
               <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='opacity-0' />
             </View>
             <FormProvider {...form}>
-              <View className='gap-2'>
+              <View className=''>
                 <CustomTextInput
                   name="senderName"
                   label="Your Name / Business Name"
