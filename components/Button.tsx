@@ -10,11 +10,11 @@ type ButtonProps = {
 
 const variantStyles = {
   primary: {
-    button: 'items-center bg-dark rounded-[28px] p-4 shadow',
+    button: 'items-center bg-dark rounded-[28px] p-4 w-5/6 shadow mx-auto',
     buttonText: 'text-light text-lg font-semibold text-center',
   },
   secondary: {
-    button: 'items-center border-2 border-dark rounded-[28px] p-4 shadow',
+    button: 'items-center border-2 border-dark rounded-[28px] p-4 w-5/6 shadow mx-auto',
     buttonText: 'text-dark text-lg font-semibold text-center',
   },
   link: {

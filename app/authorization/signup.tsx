@@ -85,12 +85,14 @@ const Signup = () => {
                     </TouchableOpacity>
                 </View>
                 <View className='w-full'>
-                    <Button title='Continue' variant='primary' className='mt-auto w-5/6 mx-auto' onPress={() => navigation.navigate('dashboard' as never)} />
+                    <Button title='Continue' variant='primary' className='mt-auto' onPress={() => navigation.navigate('dashboard' as never)} />
                 </View>
             </View>
             <View className='p-2 mb-3 w-5/6 m-auto'>
                 <Text className='text-base text-center text-dark'>By continuing, your are agreeing to our{" "}
-                    <Text className='text-blue-600' onPress={() => Linking.openURL('http://google.com')}>Terms of Use</Text>{" "}and{" "}<Text className='text-blue-600' onPress={() => Linking.openURL('http://google.com')}>Privacy Policy</Text></Text>
+                    <Text className='text-blue-600' onPress={() => Linking.openURL('http://google.com')}>Terms of Use</Text>{" "}and{" "}
+                    <Text className='text-blue-600' onPress={() => Linking.openURL('http://google.com')}>Privacy Policy</Text>
+                </Text>
             </View>
         </Container>
     )

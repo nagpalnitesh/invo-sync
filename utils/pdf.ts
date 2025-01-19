@@ -1,14 +1,13 @@
 import * as FileSystem from 'expo-file-system';
 import * as Print from 'expo-print';
-import { shareAsync } from 'expo-sharing';
 import { Invoice } from '~/schema/invoice';
 
 
-const generateInvoiceHTML = (invoiceData: Invoice) => {
+const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: number) => {
 
-  const {invoice, items, sender, recipient} = invoiceData
+    const { invoice, items, sender, recipient } = invoiceData
 
-const html = `<!DOCTYPE html>
+    const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -220,27 +219,24 @@ const html = `<!DOCTYPE html>
 </body>
 </html>`
 
-  return html
+    return html
 }
 
-  export const generateInvoicePDF = async (invoice: Invoice) => {
+export const generateInvoicePDF = async (invoiceData: Invoice, subTotal: number, total: number) => {
     try {
-
-    const date = new Date().toISOString().split('T')[0];
-
         // On iOS/android prints the given html. On web prints the HTML from the current page.
-    const { uri } = await Print.printToFileAsync({ html: generateInvoiceHTML(invoice) });
+        const { uri } = await Print.printToFileAsync({ html: generateInvoiceHTML(invoiceData, subTotal, total) });
 
-    const permanentUri= FileSystem.documentDirectory + `${date}-invoice.pdf`;
+        const permanentUri = FileSystem.documentDirectory + `invoice-${invoiceData.invoice.invoiceNumber}.pdf`;
 
-    // move to documents directory
-    await FileSystem.moveAsync({
-        from: uri,
-        to: permanentUri,
-    })
+        // move to documents directory
+        await FileSystem.moveAsync({
+            from: uri,
+            to: permanentUri,
+        })
 
-    await shareAsync(permanentUri, { UTI: '.pdf', mimeType: 'application/pdf' });
-} catch (error) {
-    console.log('There is an error: ', error);
+        return permanentUri
+    } catch (error) {
+        console.log('There is an error: ', error);
     }
-  };
+};

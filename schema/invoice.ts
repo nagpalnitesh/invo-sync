@@ -36,9 +36,9 @@ export const itemsSchema = z.object({
 export type ItemsInfo = z.infer<typeof itemsSchema>
 
 
-export type Invoice = {
-    sender: BusinessEntity;
-    recipient: BusinessEntity;
-    invoice: InvoiceInfo;
-    items: ItemsInfo;
+export type Invoice = InvoiceInfo & {
+  sender: BusinessEntity;
+  recipient: BusinessEntity;
+  invoice: InvoiceInfo;
+  items: ItemsInfo;
 }

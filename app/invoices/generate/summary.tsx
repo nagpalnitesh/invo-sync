@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import Card from '~/components/Card';
@@ -16,9 +16,6 @@ const SummaryScreen = () => {
     const subtotal = useStore(data => data.getSubTotal());
     const total = useStore(data => data.getTotal());
 
-    const downloadPDF = (invoice: Invoice) => {
-        generateInvoicePDF(invoice)
-    }
 
     const formatNumber = (number: number) => {
         return new Intl.NumberFormat('en-US', {
@@ -132,14 +129,12 @@ const SummaryScreen = () => {
                 </View>
             </KeyboardAvoidingScrollView>
 
-            <Button
-                title="Generate Invoice"
-                className="mt-5 w-5/6 mx-auto"
-                onPress={() => {
-                    // Handle invoice generation
-                    downloadPDF(invoice);
-                }}
-            />
+            <Link href={'/invoices/generate/success'} asChild>
+                <Button
+                    title="Generate Invoice"
+                    className="mt-5"
+                />
+            </Link>
         </Container>
     );
 };

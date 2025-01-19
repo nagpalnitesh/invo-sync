@@ -59,7 +59,7 @@ const SenderInfoScreen = ({ }) => {
             </FormProvider>
           </View>
         </KeyboardAvoidingScrollView>
-        <Button title='Next' className='mt-auto w-5/6 mx-auto' onPress={handleSubmit(onSubmit)} />
+        <Button title='Next' className='' onPress={handleSubmit(onSubmit)} />
       </Container>
     </>
   );

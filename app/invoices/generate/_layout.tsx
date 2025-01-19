@@ -9,6 +9,7 @@ const GenerateInvoiceLayout = () => {
       <Stack.Screen name='invoice-info' options={{ headerShown: false }} />
       <Stack.Screen name='items' options={{ headerShown: false }} />
       <Stack.Screen name='summary' options={{ headerShown: false }} />
+      <Stack.Screen name='success' options={{ headerShown: false }} />
     </Stack>
   )
 };
