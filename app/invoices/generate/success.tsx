@@ -83,7 +83,7 @@ const Success = () => {
 
                 ) : (
                     <>
-                        <LottieView
+                        {/* <LottieView
                             loop={false}
                             autoPlay
                             ref={animation}
@@ -92,7 +92,7 @@ const Success = () => {
                                 zIndex: -100,
                             }}
                             source={require('../../../assets/party.json')}
-                        />
+                        /> */}
                         <View className='items-center gap-4'>
                             <MaterialCommunityIcons name="check-circle" size={80} color="#071739" />
                             <Text className='text-dark text-2xl font-bold text-center'>Invoice Generated Successfully</Text>
