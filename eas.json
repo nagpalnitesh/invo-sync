@@ -28,7 +28,6 @@
   },
   "submit": {
     "production": {
-      "autoIncrement": true,
       "android": {
         "serviceAccountKeyPath": "./path-to-service-account-key.json"
       },
