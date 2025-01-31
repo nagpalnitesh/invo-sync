@@ -12,7 +12,7 @@
     "@hookform/resolvers": "^3.9.1",
     "@react-native-community/datetimepicker": "8.2.0",
     "ejs": "^3.1.10",
-    "expo": "~52.0.20",
+    "expo": "~52.0.28",
     "expo-checkbox": "~4.0.1",
     "expo-dev-client": "~5.0.8",
     "expo-file-system": "~18.0.6",
