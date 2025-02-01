@@ -17,11 +17,11 @@ const SenderInfoScreen = ({ }) => {
   const form = useForm<BusinessEntity>({
     resolver: zodResolver(businessInfoSchema),
     defaultValues: {
-      senderName: sender?.senderName || 'a',
-      address: sender?.address || 'b',
-      phone: sender?.phone || 'c',
-      email: sender?.email || 'd@e.com',
-      taxId: sender?.taxId || 'f'
+      senderName: sender?.senderName || '',
+      address: sender?.address || '',
+      phone: sender?.phone || '',
+      email: sender?.email || '',
+      taxId: sender?.taxId || ''
     }
   });
   const { handleSubmit } = form

@@ -25,10 +25,10 @@ export const useStore = create<InvoiceState>((set, get) => ({
     startNewInvoice: () => set(() => ({
         newInvoice: {
             items: [{
-                name: 'example',
-                description: 'example description',
-                quantity: 10,
-                price: 30,
+                name: '',
+                description: '',
+                quantity: 1,
+                price: null,
             }],
             date: new Date(),
             dueDate: new Date(new Date().setDate(new Date().getDate() + 15)),

@@ -18,11 +18,11 @@ const RecipientInfoScreen = ({ }) => {
   const form = useForm<BusinessEntity>({
     resolver: zodResolver(businessInfoSchema),
     defaultValues: {
-      senderName: recipient?.senderName || 'a',
-      address: recipient?.address || 'b',
-      phone: recipient?.phone || 'c',
-      email: recipient?.email || 'd@e.com',
-      taxId: recipient?.taxId || 'f'
+      senderName: recipient?.senderName || '',
+      address: recipient?.address || '',
+      phone: recipient?.phone || '',
+      email: recipient?.email || '',
+      taxId: recipient?.taxId || '',
     }
   });
   const { handleSubmit } = form
