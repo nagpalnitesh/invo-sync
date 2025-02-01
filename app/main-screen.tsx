@@ -1,18 +1,11 @@
-import { router, useNavigation } from 'expo-router';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useNavigation } from 'expo-router';
+import React from 'react';
 import { Image, Text, View } from 'react-native';
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
 import '../global.css';
 const Main = () => {
     const navigation = useNavigation()
-    const form = useForm()
-    const onSignup = () => {
-        router.push('/authorization/signup')
-    }
-
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     return (
         <Container>
@@ -23,7 +16,7 @@ const Main = () => {
                             resizeMode="contain" />
                     </View>
                     <View className='gap-2 items-center'>
-                        <Text className="text-2xl font-bold text-gray-800">Welcome to InvoSync</Text>
+                        <Text className="text-3xl font-bold text-gray-800">Welcome to InvoSync</Text>
                         <Text className='text-xl text-gray-600'>Create, manage, and share invoices in seconds.</Text>
                     </View>
                 </View>
