@@ -18,7 +18,7 @@ const InvoiceInfoScreen = ({ }) => {
   const form = useForm<InvoiceInfo>({
     resolver: zodResolver(invoiceInfoSchema),
     defaultValues: {
-      invoiceNumber: invoice?.invoiceNumber || 'INV-123',
+      invoiceNumber: invoice?.invoiceNumber || '',
       date: invoice?.date,
       dueDate: invoice?.dueDate,
       notes: invoice?.notes || ''
@@ -51,7 +51,7 @@ const InvoiceInfoScreen = ({ }) => {
                 <CustomTextInput
                   name="invoiceNumber"
                   label="Invoice Number"
-                  placeholder="INV-123" selectTextOnFocus={false} />
+                  placeholder="INV-000" selectTextOnFocus={false} />
                 <CustomDatePicker name="date" label="Invoice Date" />
                 <CustomDatePicker
                   name="dueDate"
