@@ -1,10 +1,9 @@
 import * as Sentry from '@sentry/react-native';
 import { isRunningInExpoGo } from 'expo';
 import 'expo-dev-client';
-import { Stack, useNavigationContainerRef, type ErrorBoundaryProps } from 'expo-router';
+import { Stack, useNavigationContainerRef } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-import { Image, Text, View } from 'react-native';
 import '../global.css';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
@@ -48,21 +47,21 @@ function RootLayout() {
 
 export default Sentry.wrap(RootLayout);
 
-export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
-  return (
-    <View className="flex-1 items-center justify-center bg-gray-100 gap-8 p-8">
-      <View>
-        <Image
-          source={{ uri: 'https://cdn-icons-png.flaticon.com/512/5803/5803901.png' }}
-          className="w-40 h-40 mb-4"
-        />
-      </View>
-      <View className='items-center gap-2'>
-        <Text className="text-4xl font-bold text-gray-800">Oops!</Text>
-        <Text className="text-gray-600 text-center text-lg">Something went wrong.</Text>
-        <Text className="text-gray-600 text-center mt-2">{error.message}</Text>
-        <Text className="text-dark text-lg  active:opacity-70 font-semibold" onPress={retry}>Try Again?</Text>
-      </View>
-    </View>
-  );
-}
+// export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
+//   return (
+//     <View className="flex-1 items-center justify-center bg-gray-100 gap-8 p-8">
+//       <View>
+//         <Image
+//           source={{ uri: 'https://cdn-icons-png.flaticon.com/512/5803/5803901.png' }}
+//           className="w-40 h-40 mb-4"
+//         />
+//       </View>
+//       <View className='items-center gap-2'>
+//         <Text className="text-4xl font-bold text-gray-800">Oops!</Text>
+//         <Text className="text-gray-600 text-center text-lg">Something went wrong.</Text>
+//         <Text className="text-gray-600 text-center mt-2">{error.message}</Text>
+//         <Text className="text-dark text-lg  active:opacity-70 font-semibold" onPress={retry}>Try Again?</Text>
+//       </View>
+//     </View>
+//   );
+// }
