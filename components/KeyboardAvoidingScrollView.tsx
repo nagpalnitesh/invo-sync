@@ -6,6 +6,7 @@ import {
     ScrollView,
     ScrollViewProps
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface KeyboardAvoidingScrollViewProps extends PropsWithChildren {
     keyboardAvoidingViewProps?: Omit<KeyboardAvoidingViewProps, 'behavior'>;
@@ -36,9 +37,11 @@ export const KeyboardAvoidingScrollView: React.FC<KeyboardAvoidingScrollViewProp
                 style={{ flex: 1 }}
             >
 
-                {/* <SafeAreaView className='flex-1 bg-zinc-900/2'> */}
-                {children}
-                {/* </SafeAreaView> */}
+                <SafeAreaView>
+                    {/* <SafeAreaView className='flex-1 bg-zinc-900/2'> */}
+                    {children}
+                    {/* </SafeAreaView> */}
+                </SafeAreaView>
             </ScrollView>
         </KeyboardAvoidingView>
     );

@@ -8,9 +8,11 @@ const safeAreaStyle = {
 
 export const Container = ({ children }: { children: React.ReactNode }) => {
   return (
-    <SafeAreaView className='flex-1 bg-zinc-900/2'>
-      <StatusBar barStyle={'dark-content'} backgroundColor={'rgba(24, 24, 27, 0.05)'} />
-      {children}
-    </SafeAreaView>
+    <>
+      <StatusBar barStyle={'dark-content'} backgroundColor={'#18181b'} />
+      <SafeAreaView className='flex-1 bg-zinc-900/2'>
+        {children}
+      </SafeAreaView>
+    </>
   );
 };
