@@ -35,7 +35,7 @@ const ItemsInfoScreen = ({ }) => {
     <>
       <Container>
         <KeyboardAvoidingScrollView>
-          <View className="mb-5">
+          <View className="">
             <View className="flex flex-row justify-between items-center mb-5">
               <TouchableOpacity onPress={() => router.back()}>
                 <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='' />
@@ -64,9 +64,9 @@ const ItemsInfoScreen = ({ }) => {
                         </View>
                       </View>
                       <View className='flex-row items-center justify-between mb-5'>
-                        <View className='flex-row gap-4'>
+                        <View className='flex-row gap-2'>
                           <Text className='font-bold text-lg'>Total:</Text>
-                          <Text className='font-bold text-lg'>$ {((!isNaN(form.watch(`items.${index}.price`)) ? form.watch(`items.${index}.price`) : 0) * (!isNaN(form.watch(`items.${index}.quantity`)) ? form.watch(`items.${index}.quantity`) : 0)).toFixed(2)}</Text>
+                          <Text className='font-bold text-lg'>&#8377;{((!isNaN(form.watch(`items.${index}.price`)) ? form.watch(`items.${index}.price`) : 0) * (!isNaN(form.watch(`items.${index}.quantity`)) ? form.watch(`items.${index}.quantity`) : 0)).toFixed(2)}</Text>
                         </View>
                         <TouchableOpacity onPress={() => remove(index)}>
                           <AntDesign name="minuscircleo" size={24} color="red" />

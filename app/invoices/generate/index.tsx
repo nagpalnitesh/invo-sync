@@ -41,7 +41,7 @@ const SenderInfoScreen = ({ }) => {
     <>
       <Container>
         <KeyboardAvoidingScrollView>
-          <View className="mb-5">
+          <View className="">
             <View className="flex flex-row justify-between items-center mb-5">
               <TouchableOpacity onPress={() => router.back()}>
                 <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='' />

@@ -2,220 +2,170 @@ import * as FileSystem from 'expo-file-system';
 import * as Print from 'expo-print';
 import { Invoice } from '~/schema/invoice';
 
-
 const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: number) => {
 
     const { items, sender, recipient } = invoiceData
 
-    const html = `<!DOCTYPE html>
-<html lang="en">
+    const formatIndianCurrency = (amount: number) => {
+        return new Intl.NumberFormat("en-IN", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }).format(amount);
+    };
+
+    const html = `
+    <!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Tax Invoice</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 2px solid black; /* Added outer border */
-            padding: 20px; /* Added padding to prevent content touching border */
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }
-        
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .company-name {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-        
-        .address {
-            margin-bottom: 10px;
-        }
-        
-        .gstin {
-            text-align: left;
-            padding: 5px;
-        }
-        
-        .amount-in-words {
-            font-style: italic;
-            margin: 10px 0;
-        }
-        
-        .bank-details {
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        .terms {
-            margin-top: 20px;
-        }
-        
-        .signature-box {
-            border: 1px solid black;
-            padding: 20px;
-            margin-top: 20px;
-            height: 60px;
-        }
-    </style>
 </head>
-<body>
-    <div class="gstin">GSTIN: 06AALCP6712A1ZP</div>
-    
-    <div class="header">
-        <h2>TAX INVOICE</h2>
-        <div class="company-name">M/S. PIXXMO ONLINE SERVICES PVT. LTD.</div>
-        <div class="address">977, SECTOR-1, NEAR MAIN SECTOR-1 MARKET, ROHTAK – 124001 (HARYANA)</div>
-        <div>email: contact@pixxmo.com</div>
-    </div>
+<body style="font-family: Arial, sans-serif; max-width: 800px;">
+    <div style="padding: 10px;">
+        ${sender.taxId && `<div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div>Tax ID: ${sender.taxId}</div>
+        </div>`}
 
-    <table>
-        <tr>
-            <td>
-                Invoice No.: ${invoiceData.invoiceNumber}<br>
-                Dated: ${invoiceData.date}<br>
-                Place of Supply: Haryana (06)<br>
-                Reverse Charge: N<br>
-                Vehicle Owner:<br>
-                Vehicle No.: BY CART<br>
-                Station:
-            </td>
-            <td>
-                E-Way Bill No.:<br>
-                TIME: 01:10 PM<br>
-                CASH/CREDIT: CREDIT
-            </td>
-        </tr>
-    </table>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h2 style="margin: 5px;">TAX INVOICE</h2>
+            <div style="font-weight: bold;">M/S. ${sender.senderName}</div>
+            <div>${sender.address}</div>
+            <div>email: ${sender.email}</div>
+        </div>
 
-    <table>
-        <tr>
-            <td>
-                <strong>Billed to:</strong><br>
-                ${recipient.senderName}<br>
-                ${recipient.phone}<br>
-                ${recipient.address}<br>
-                ${recipient.email}<br>
-                GSTIN / UIN: ${recipient.taxId}<br>
-                PAN: PAN NUMBER
-            </td>
-            <td>
-                <strong>Shipped To:</strong><br>
-                ${recipient.senderName}<br>
-                ${recipient.phone}<br>
-                ${recipient.address}<br>
-                ${recipient.email}<br>
-                GSTIN / UIN: ${recipient.taxId}<br>
-                PAN: PAN NUMBER
-            </td>
-        </tr>
-    </table>
+        <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+        "
+      >
+        <div style="width: 48%">
+          <table>
+            <tr>
+              <td>Invoice No.</td>
+              <td>: ${invoiceData.invoiceNumber}</td>
+            </tr>
+          </table>
+        </div>
+        <div style="width: 48%">
+          <table style="float: right">
+            <tr>
+              <td>Dated</td>
+              <td>: ${invoiceData.date.toLocaleDateString()}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
 
-    <table>
-        <tr>
-            <th>S.N</th>
-            <th>Description of Goods</th>
-            <th>HSN/SAC Code</th>
-            <th>Qty.</th>
-            <th>Unit</th>
-            <th>Price</th>
-            <th>Amount(₹)</th>
-        </tr>
-        <tr>
-            <td>1.</td>
-            <td>Sewerage Frame</td>
-            <td>7216</td>
-            <td>66.55</td>
-            <td>Kgs.</td>
-            <td>150.00</td>
-            <td>9,982.50</td>
-        </tr>
-        <tr>
-            <td colspan="6">Add: CGST @ 9.00%</td>
-            <td>898.42</td>
-        </tr>
-        <tr>
-            <td colspan="6">Add: SGST @ 9.00%</td>
-            <td>898.42</td>
-        </tr>
-        <tr>
-            <td colspan="3">Grand Total</td>
-            <td>66.55</td>
-            <td>Kgs.</td>
-            <td></td>
-            <td>₹11,779.34</td>
-        </tr>
-    </table>
-
-    <table>
-        <tr>
-            <th>Tax Rate</th>
-            <th>Taxable Amt.</th>
-            <th>CGST Amt.</th>
-            <th>SGST Amt.</th>
-            <th>Total Tax</th>
-        </tr>
-        <tr>
-            <td>18%</td>
-            <td>9,982.50</td>
-            <td>898.42</td>
-            <td>898.42</td>
-            <td>1,796.85</td>
-        </tr>
-    </table>
-
-    <div class="amount-in-words">
-       TOTAL AMOUNT IN WORDS
-    </div>
-
-    <div class="bank-details">
-        <strong>BANK DETAIL</strong><br>
-        BANK NAME<br>
-        BANK BRANCH<br>
-        BANK ACCOUNT NO<br>
-        IFSC - BANK IFSC CODE
-    </div>
-
-    <table>
-        <tr>
-            <td>
-                <div class="terms">
-                    <strong>Terms & Conditions</strong><br>
-                    E. & O.E.<br>
-                    1. Goods once sold will not be taken back.<br>
-                    2. Interest @ 18%p.a. will be charged if the payment is not made with in the stipulated time.<br>
-                    3. Subject to 'Haryana' Jurisdiction only.
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="width: 48%; border: 1px solid black; padding: 10px;">
+                <div style="font-weight: bold;">Billed to:</div>
+                <div>${recipient.senderName}</div>
+                <div>${recipient.address}</div>
+                <div style="margin-top: 10px;">
+                    <div>Mobile No: ${recipient.phone}</div>
+                    <div>Tax ID: ${recipient.taxId}</div>
                 </div>
-            </td>
-            <td>
-                <div>
-                    <strong>Receiver's Signature:</strong>
-                    <div class="signature-box"></div>
-                    <div style="text-align: center;">
-                        for M/S PIXXMO ONLINE SERVICES PVT. LTD.<br><br>
-                        Authorised Signatory
-                    </div>
+            </div>
+            <div style="width: 48%; border: 1px solid black; padding: 10px;">
+                <div style="font-weight: bold;">Shipped To:</div>
+                <div>${recipient.senderName}</div>
+                <div>${recipient.address}</div>
+                <div style="margin-top: 10px;">
+                    <div>Mobile No: ${recipient.phone}</div>
+                    <div>Tax ID: ${recipient.taxId}</div>
                 </div>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+
+           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr style="border: 1px solid black;">
+                    <th style="border: 1px solid black; padding: 5px;">S.N</th>
+                    <th style="border: 1px solid black; padding: 5px; text-align: left;">Description</th>
+                    <th style="border: 1px solid black; padding: 5px;">Qty.</th>
+                    <th style="border: 1px solid black; padding: 5px; text-align: right;">Price (₹)</th>
+                    <th style="border: 1px solid black; padding: 5px; text-align: right;">Amount (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${items && items.map((item: { name: string; quantity: number; price: number }, index: number) =>
+        `<tr style="border: 1px solid black;">
+                        <td style="border: 1px solid black; padding: 5px; text-align: center;">${index + 1}</td>
+                        <td style="border: 1px solid black; padding: 5px; text-align: left;">${item.name}</td>
+                        <td style="border: 1px solid black; padding: 5px; text-align: center;">${item.quantity}</td>
+                        <td style="border: 1px solid black; padding: 5px; text-align: right;">₹ ${formatIndianCurrency(item.price)}</td>
+                        <td style="border: 1px solid black; padding: 5px; text-align: right;">₹ ${formatIndianCurrency(item.quantity * item.price)}</td>
+                    </tr>`).join('')}
+            </tbody>
+        </table>
+
+        
+      <div
+        style="
+          text-align: right;
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: end;
+          align-items: end;
+          align-content: end;
+          gap: 10px;
+          flex-direction: row;
+        "
+      >
+        <div style="font-weight: bold">Sub Total:</div>
+        <div>₹ ${formatIndianCurrency(subTotal)}</div>
+      </div>
+      <div
+        style="
+          text-align: right;
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: end;
+          align-items: end;
+          align-content: end;
+          gap: 10px;
+          flex-direction: row;
+        "
+      >
+        <div style="font-weight: bold">Total:</div>
+        <div>₹ ${(formatIndianCurrency(total))}</div>
+      </div>
+
+        <!--<div style="margin-bottom: 20px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="border: 1px solid black;">
+                    <th style="border: 1px solid black; padding: 5px;">Tax Rate</th>
+                    <th style="border: 1px solid black; padding: 5px;">Taxable Amt.</th>
+                    <th style="border: 1px solid black; padding: 5px;">CGST Amt.</th>
+                    <th style="border: 1px solid black; padding: 5px;">SGST Amt.</th>
+                    <th style="border: 1px solid black; padding: 5px;">Total Tax</th>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td style="border: 1px solid black; padding: 5px;">18%</td>
+                    <td style="border: 1px solid black; padding: 5px;">9,982.50</td>
+                    <td style="border: 1px solid black; padding: 5px;">898.42</td>
+                    <td style="border: 1px solid black; padding: 5px;">898.42</td>
+                    <td style="border: 1px solid black; padding: 5px;">1,796.85</td>
+                </tr>
+            </table>
+        </div>-->
+
+        <!--<div style="margin-bottom: 20px;">
+            <div style="font-weight: bold;">Eleven Thousand Seven Hundred Seventy Nine Rupees and Thirty Four Paisa Only</div>
+        </div>-->
+
+        <div style="display: flex; justify-content: space-between;">
+            <div style="width: 48%;">
+                <div style="font-weight: bold;">Notes</div>
+                <div>${invoiceData.notes}</div>
+            </div>
+            <div style="width: 48%; text-align: right;">
+                <div style="margin-top: 50px;">for M/S ${sender.senderName}</div>
+                <div style="margin-top: 30px;">Authorised Signatory</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>`
 

@@ -27,7 +27,7 @@ const SummaryScreen = () => {
     return (
         <Container>
             <KeyboardAvoidingScrollView>
-                <View className="mb-5 gap-2 p-2">
+                <View className="gap-2 p-2">
                     <View className="flex flex-row justify-between items-center mb-5">
                         <TouchableOpacity onPress={() => router.back()}>
                             <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" />
@@ -88,25 +88,18 @@ const SummaryScreen = () => {
                     <Text className="text-xl font-bold text-gray-600 uppercase px-4 pb-2">Items</Text>
                     <Card className="bg-light mb-4">
                         <View className="gap-3">
-                            {/* Header row */}
-                            <View className="flex-row justify-between mb-2">
-                                <Text className="font-semibold text-lg flex-1">Item</Text>
-                                <Text className="font-semibold text-lg w-16 text-center">Qty</Text>
-                                <Text className="font-semibold text-lg w-20 text-center">Price</Text>
-                                <Text className="font-semibold text-lg w-20 text-center">Total</Text>
-                            </View>
-
                             {/* Item rows */}
                             {invoice.items && Array.isArray(invoice.items) && invoice.items.map((item, index) => (
                                 <View className="border-b border-gray-200 pb-2" key={index}>
                                     <View className="flex-row justify-between items-center">
                                         <View className="flex-1">
                                             <Text className="font-semibold text-lg">{item.name}</Text>
-                                            <Text className="text-gray-500 text-sm">{item.description}</Text>
+                                            <Text className="text-gray-900/50 text-sm">{item.description}</Text>
                                         </View>
-                                        <Text className="w-16 text-center text-lg">{formatNumber(item.quantity)}</Text>
-                                        <Text className="w-20 text-center text-lg">${(item.price).toFixed(2)}</Text>
-                                        <Text className="w-20 text-center text-lg">${(item.price * item.quantity).toFixed(2)}</Text>
+                                        <View className="flex-col justify-between items-end">
+                                            <Text className="text-lg text-dark">{formatNumber(item.quantity)} x &#8377;{(item.price).toFixed(2)}</Text>
+                                            <Text className="text-lg text-dark font-semibold">&#8377;{(item.price * item.quantity).toFixed(2)}</Text>
+                                        </View>
                                     </View>
                                 </View>
                             ))}
@@ -119,11 +112,11 @@ const SummaryScreen = () => {
                         <View className="gap-2">
                             <View className="flex-row justify-between">
                                 <Text className="text-dark text-lg">Subtotal</Text>
-                                <Text className="text-dark text-lg">${subtotal.toFixed(2)}</Text>
+                                <Text className="text-dark text-lg">&#8377;{subtotal.toFixed(2)}</Text>
                             </View>
                             <View className="flex-row justify-between mt-2">
                                 <Text className="font-bold text-lg">Total</Text>
-                                <Text className="font-bold text-lg">${total.toFixed(2)}</Text>
+                                <Text className="font-bold text-lg">&#8377;{total.toFixed(2)}</Text>
                             </View>
                         </View>
                     </Card>
