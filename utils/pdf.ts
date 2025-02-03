@@ -157,8 +157,8 @@ const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: numb
 
         <div style="display: flex; justify-content: space-between;">
             <div style="width: 48%;">
-                <div style="font-weight: bold;">Notes</div>
-                <div>${invoiceData.notes}</div>
+            ${invoiceData.notes && `<div style="font-weight: bold;">Notes</div>
+                <div>${invoiceData.notes}</div>`}
             </div>
             <div style="width: 48%; text-align: right;">
                 <div style="margin-top: 50px;">for ${sender.senderName}</div>

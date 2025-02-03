@@ -55,8 +55,10 @@ const ItemsInfoScreen = ({ }) => {
                       <CustomTextInput name={`items.${index}.description`} label='Description' placeholder='Enter description' multiline />
                       <View className='flex-row items-center gap-2'>
                         <View className='flex-1 '>
-                          <CustomTextInput name={`items.${index}.quantity`} label='Quantity' placeholder='Enter quantity' keyboardType='numeric' onChangeText={(text) =>
-                            form.setValue(`items.${index}.quantity`, parseInt(text) || 0)
+                          <CustomTextInput name={`items.${index}.quantity`} label='Quantity' placeholder='Enter quantity' keyboardType='numeric' onChangeText={(text) => {
+                            console.log('text', text, parseFloat(text))
+                            form.setValue(`items.${index}.quantity`, parseFloat(text) || 0)
+                          }
                           } />
                         </View>
                         <View className='flex-1'>

@@ -22,8 +22,8 @@ export default function CustomTextInput({ label, name, ...props }: CustomTextInp
                     className="w-full bg-light border border-gray-200 rounded-lg p-4 text-dark focus:border-dark text-lg leading-tight"
                     value={value?.toString()}
                     onChangeText={(e) => {
-                        console.log('e', e, parseInt(e))
-                        onChange(props.keyboardType === 'numeric' ? parseInt(e) ? parseInt(e) : null : e)
+                        let text = parseFloat(e) ? parseFloat(e) : null
+                        onChange(props.keyboardType === 'numeric' ? text : e)
                     }}
                     onBlur={onBlur}
                 />

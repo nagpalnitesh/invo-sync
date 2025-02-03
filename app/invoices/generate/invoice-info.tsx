@@ -56,10 +56,10 @@ const InvoiceInfoScreen = ({ }) => {
                 <CustomDatePicker
                   name="dueDate"
                   label="Invoice Due Date" />
-                <CustomTextInput
+                {/* <CustomTextInput
                   name="notes"
                   label="Notes"
-                  placeholder="Some notes" multiline />
+                  placeholder="Some notes" multiline /> */}
               </View>
             </FormProvider>
           </View>
