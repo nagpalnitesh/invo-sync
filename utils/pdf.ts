@@ -4,16 +4,16 @@ import { Invoice } from '~/schema/invoice';
 
 const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: number) => {
 
-    const { items, sender, recipient } = invoiceData
+  const { items, sender, recipient } = invoiceData
 
-    const formatIndianCurrency = (amount: number) => {
-        return new Intl.NumberFormat("en-IN", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        }).format(amount);
-    };
+  const formatIndianCurrency = (amount: number) => {
+    return new Intl.NumberFormat("en-IN", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(amount);
+  };
 
-    const html = `
+  const html = `
     <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@ const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: numb
 
         <div style="text-align: center; margin-bottom: 20px;">
             <h2 style="margin: 5px;">TAX INVOICE</h2>
-            <div style="font-weight: bold;">M/S. ${sender.senderName}</div>
+            <div style="font-weight: bold;">${sender.senderName}</div>
             <div>${sender.address}</div>
             <div>email: ${sender.email}</div>
         </div>
@@ -90,7 +90,7 @@ const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: numb
             </thead>
             <tbody>
                 ${items && items.map((item: { name: string; quantity: number; price: number }, index: number) =>
-        `<tr style="border: 1px solid black;">
+    `<tr style="border: 1px solid black;">
                         <td style="border: 1px solid black; padding: 5px; text-align: center;">${index + 1}</td>
                         <td style="border: 1px solid black; padding: 5px; text-align: left;">${item.name}</td>
                         <td style="border: 1px solid black; padding: 5px; text-align: center;">${item.quantity}</td>
@@ -161,7 +161,7 @@ const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: numb
                 <div>${invoiceData.notes}</div>
             </div>
             <div style="width: 48%; text-align: right;">
-                <div style="margin-top: 50px;">for M/S ${sender.senderName}</div>
+                <div style="margin-top: 50px;">for ${sender.senderName}</div>
                 <div style="margin-top: 30px;">Authorised Signatory</div>
             </div>
         </div>
@@ -169,24 +169,24 @@ const generateInvoiceHTML = (invoiceData: Invoice, subTotal: number, total: numb
 </body>
 </html>`
 
-    return html
+  return html
 }
 
 export const generateInvoicePDF = async (invoiceData: Invoice, subTotal: number, total: number) => {
-    try {
-        // On iOS/android prints the given html. On web prints the HTML from the current page.
-        const { uri } = await Print.printToFileAsync({ html: generateInvoiceHTML(invoiceData, subTotal, total) });
+  try {
+    // On iOS/android prints the given html. On web prints the HTML from the current page.
+    const { uri } = await Print.printToFileAsync({ html: generateInvoiceHTML(invoiceData, subTotal, total) });
 
-        const permanentUri = FileSystem.documentDirectory + `invoice-${invoiceData.invoiceNumber}.pdf`;
+    const permanentUri = FileSystem.documentDirectory + `invoice-${invoiceData.invoiceNumber}.pdf`;
 
-        // move to documents directory
-        await FileSystem.moveAsync({
-            from: uri,
-            to: permanentUri,
-        })
+    // move to documents directory
+    await FileSystem.moveAsync({
+      from: uri,
+      to: permanentUri,
+    })
 
-        return permanentUri
-    } catch (error) {
-        console.log('There is an error: ', error);
-    }
+    return permanentUri
+  } catch (error) {
+    console.log('There is an error: ', error);
+  }
 };
