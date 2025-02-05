@@ -29,7 +29,8 @@
   "submit": {
     "production": {
       "android": {
-        "serviceAccountKeyPath": "./path-to-service-account-key.json"
+        "serviceAccountKeyPath": "./playstore-449718-a98deeaf92d5.json",
+        "track": "internal"
       },
       "ios": {
         "appleId": "your-apple-id@example.com"
