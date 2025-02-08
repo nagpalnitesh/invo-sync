@@ -21,7 +21,7 @@ export const KeyboardAvoidingScrollView: React.FC<KeyboardAvoidingScrollViewProp
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            className={`flex-1 ${Platform.OS === 'ios' ? 'p-0' : 'pt-6'}`}
+            className={`flex-1`}
             {...keyboardAvoidingViewProps}
             keyboardVerticalOffset={0}
         >
@@ -31,9 +31,9 @@ export const KeyboardAvoidingScrollView: React.FC<KeyboardAvoidingScrollViewProp
                 {...scrollViewProps}
                 contentContainerStyle={{
                     flexGrow: 1,
-                    padding: 10,
                     gap: 5,
                 }}
+                className='px-5'
                 style={{ flex: 1 }}
             >
 

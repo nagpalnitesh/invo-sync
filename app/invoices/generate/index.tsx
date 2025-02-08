@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Platform, Text, TouchableOpacity, View } from 'react-native';
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
 import CustomTextInput from '~/components/CustomTextInput';
@@ -40,8 +40,7 @@ const SenderInfoScreen = ({ }) => {
   return (
     <>
       <Container>
-        <KeyboardAvoidingScrollView>
-          <View className="">
+        <View className={`px-3 ${Platform.OS === 'ios' ? '' : 'pt-10'}`}>
             <View className="flex flex-row justify-between items-center mb-5">
               <TouchableOpacity onPress={() => router.back()}>
                 <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='' />
@@ -52,6 +51,9 @@ const SenderInfoScreen = ({ }) => {
               </Text>
               <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='opacity-0' />
             </View>
+        </View>
+        <KeyboardAvoidingScrollView>
+          <View className="">
             <FormProvider {...form}>
               <View className=''>
                 <CustomTextInput

@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { router } from 'expo-router';
 import React from 'react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Platform, Text, TouchableOpacity, View } from 'react-native';
 import { Button } from '~/components/Button';
 import Card from '~/components/Card';
 import { Container } from '~/components/Container';
@@ -34,18 +34,20 @@ const ItemsInfoScreen = ({ }) => {
   return (
     <>
       <Container>
+        <View className={`px-3 ${Platform.OS === 'ios' ? '' : 'pt-10'}`}>
+          <View className="flex flex-row justify-between items-center mb-5">
+            <TouchableOpacity onPress={() => router.back()}>
+              <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='' />
+            </TouchableOpacity>
+            {/* <Button title='Back' className='mt-5 w-1/6 mx-auto' onPress={() => router.back()} /> */}
+            <Text className="text-3xl font-bold text-dark text-center">
+              Items
+            </Text>
+            <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='opacity-0' />
+          </View>
+        </View>
         <KeyboardAvoidingScrollView>
           <View className="">
-            <View className="flex flex-row justify-between items-center mb-5">
-              <TouchableOpacity onPress={() => router.back()}>
-                <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='' />
-              </TouchableOpacity>
-              {/* <Button title='Back' className='mt-5 w-1/6 mx-auto' onPress={() => router.back()} /> */}
-              <Text className="text-3xl font-bold text-dark text-center">
-                Items
-              </Text>
-              <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='opacity-0' />
-            </View>
             <View className='flex-col gap-5 p-2'>
               <FormProvider {...form}>
                 {fields.map((field, index) => (

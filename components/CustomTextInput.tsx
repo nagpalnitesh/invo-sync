@@ -27,7 +27,7 @@ export default function CustomTextInput({ label, name, ...props }: CustomTextInp
                     }}
                     onBlur={onBlur}
                 />
-                <Text className="text-sm text-red-500">
+                <Text className="text-sm text-red-700">
                     {error?.message}
                 </Text>
             </View>
