@@ -49,10 +49,10 @@
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.niteshnagpal.invosync"
+      "package": "com.nagpalnitesh.invosync"
     },
     "ios": {
-      "bundleIdentifier": "com.niteshnagpal.invosync"
+      "bundleIdentifier": "com.nagpalnitesh.invosync"
     }
   }
 }
