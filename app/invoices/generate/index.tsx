@@ -41,16 +41,16 @@ const SenderInfoScreen = ({ }) => {
     <>
       <Container>
         <View className={`px-3 ${Platform.OS === 'ios' ? '' : 'pt-10'}`}>
-            <View className="flex flex-row justify-between items-center mb-5">
-              <TouchableOpacity onPress={() => router.back()}>
-                <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='' />
-              </TouchableOpacity>
-              {/* <Button title='Back' className='mt-5 w-1/6 mx-auto' onPress={() => router.back()} /> */}
-              <Text className="text-3xl font-bold text-dark text-center">
-                Sender Information
-              </Text>
-              <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='opacity-0' />
-            </View>
+          <View className="flex flex-row justify-between items-center mb-5">
+            <TouchableOpacity onPress={() => router.back()}>
+              <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='' />
+            </TouchableOpacity>
+            {/* <Button title='Back' className='mt-5 w-1/6 mx-auto' onPress={() => router.back()} /> */}
+            <Text className="text-3xl font-bold text-dark text-center">
+              Sender Information
+            </Text>
+            <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className='opacity-0' />
+          </View>
         </View>
         <KeyboardAvoidingScrollView>
           <View className="">
@@ -63,7 +63,7 @@ const SenderInfoScreen = ({ }) => {
                   placeholder="Enter your name or business name"
                   onChangeText={setSenderName}
                 />
-                <CustomTextInput name='address' label='Address' value={address} placeholder='Enter your address' onChangeText={setAddress} multiline />
+                <CustomTextInput numberOfLines={5} className='text-top leading-tight min-h-[130px]' name='address' label='Address' value={address} placeholder='Enter your address' onChangeText={setAddress} multiline />
                 <CustomTextInput name='phone' label='Phone Number' value={phone} placeholder='Enter your phone number' onChangeText={setPhone} />
                 <CustomTextInput name='email' label='Email Address' value={email} placeholder='Enter your email address' onChangeText={setEmail} />
                 <CustomTextInput name='taxId' label='Tax ID' value={taxId} placeholder='Enter your tax ID' onChangeText={setTaxId} />

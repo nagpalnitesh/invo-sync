@@ -5,6 +5,7 @@ import { Text, TextInput, TextInputProps, View } from "react-native";
 type CustomTextInputProps = {
     name: string;
     label?: string;
+    className?: string;
 } & TextInputProps
 
 export default function CustomTextInput({ label, name, ...props }: CustomTextInputProps) {
@@ -19,12 +20,13 @@ export default function CustomTextInput({ label, name, ...props }: CustomTextInp
                 }
                 <TextInput {...props}
                     placeholderTextColor="#6B7280"
-                    className="w-full bg-light border border-gray-200 rounded-lg p-4 text-dark focus:border-dark text-lg leading-tight"
+                    className={`w-full bg-light border border-gray-200 rounded-lg p-4 text-dark focus:border-dark text-lg leading-tight ${props.className ? props.className : ''}`}
                     value={value?.toString()}
                     onChangeText={(e) => {
                         let text = parseFloat(e) ? parseFloat(e) : null
                         onChange(props.keyboardType === 'numeric' ? text : e)
                     }}
+                    textAlignVertical={"top"}
                     onBlur={onBlur}
                 />
                 <Text className="text-sm text-red-700">
