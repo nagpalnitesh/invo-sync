@@ -35,6 +35,7 @@ function RootLayout() {
     <>
       <StatusBar />
       <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name='authorization' options={{ headerShown: false }} />
         <Stack.Screen name='settings' options={{ headerShown: false }} />
         <Stack.Screen name='main-screen' options={{ headerShown: false }} />

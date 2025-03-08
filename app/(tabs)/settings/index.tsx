@@ -3,7 +3,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Linking, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Linking, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Card from '~/components/Card';
 import { Container } from '~/components/Container';
 
@@ -11,14 +11,16 @@ const More = () => {
     const router = useRouter();
     return (
         <Container>
-            <View className="flex flex-row justify-between items-center p-2">
-                <TouchableOpacity onPress={() => router.back()}>
-                    <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" />
-                </TouchableOpacity>
-                <Text className="text-3xl font-bold text-dark text-center">
-                    Settings
-                </Text>
-                <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className="opacity-0" />
+            <View className={`px-2 ${Platform.OS === 'ios' ? '' : 'pt-10'}`}>
+                <View className="flex flex-row justify-between items-center p-2">
+                    <TouchableOpacity onPress={() => router.back()}>
+                        <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" />
+                    </TouchableOpacity>
+                    <Text className="text-3xl font-bold text-dark text-center">
+                        Settings
+                    </Text>
+                    <Ionicons name="chevron-back-circle-outline" size={28} color="#071739" className="opacity-0" />
+                </View>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
                 <View className="flex-1 px-2 pb-5">

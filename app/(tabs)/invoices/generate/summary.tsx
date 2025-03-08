@@ -2,12 +2,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { Link, Redirect, useRouter } from 'expo-router';
 import React from 'react';
 import { Platform, Text, TouchableOpacity, View } from 'react-native';
+import { Button } from '~/components/Button';
 import Card from '~/components/Card';
+import { Container } from '~/components/Container';
+import { KeyboardAvoidingScrollView } from '~/components/KeyboardAvoidingScrollView';
 import { Invoice } from '~/schema/invoice';
 import { useStore } from '~/store/store';
-import { Button } from '../../../components/Button';
-import { Container } from '../../../components/Container';
-import { KeyboardAvoidingScrollView } from '../../../components/KeyboardAvoidingScrollView';
 
 const SummaryScreen = () => {
     const router = useRouter();

@@ -85,7 +85,7 @@ const Signup = () => {
                     </TouchableOpacity>
                 </View>
                 <View className='w-full'>
-                    <Button title='Continue' variant='primary' className='mt-auto' onPress={() => navigation.navigate('dashboard' as never)} />
+                    <Button title='Continue' variant='primary' className='mt-auto' onPress={() => navigation.navigate('(tabs)' as never)} />
                 </View>
             </View>
             <View className='p-2 mb-3 w-5/6 m-auto'>

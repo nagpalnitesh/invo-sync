@@ -6,7 +6,7 @@ import { Platform, SafeAreaView, Text, TouchableOpacity, View } from "react-nati
 import Card from '~/components/Card';
 import IconButton from "~/components/IconButton";
 
-export default function Dashboard() {
+const Dashboard = () => {
     const navigation = useNavigation()
     return (
         <SafeAreaView className="flex-1">
@@ -17,7 +17,7 @@ export default function Dashboard() {
                             <Ionicons name="sparkles-sharp" size={30} color="#071739" />
                         </View>
                         <View>
-                            <Text className="text-2xl text-dark font-semibold">Welcome, HEHEHE</Text>
+                            <Text className="text-2xl text-dark font-semibold">Welcome, Guest</Text>
                             <Text className='text-sm text-dark/70 px-1'>Happy Invoicing!</Text>
                         </View>
                     </View>
@@ -73,3 +73,5 @@ export default function Dashboard() {
         </SafeAreaView >
     );
 }
+
+export default Dashboard
