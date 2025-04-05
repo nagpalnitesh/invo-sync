@@ -72,7 +72,7 @@ const RecipientInfoScreen = ({ }) => {
             </FormProvider>
           </View>
         </KeyboardAvoidingScrollView>
-        <Button title='Next' className='' onPress={handleSubmit(onSubmit)} />
+        <Button title='Next' className='my-5' onPress={handleSubmit(onSubmit)} />
       </Container>
     </>
   );

@@ -84,7 +84,7 @@ const ItemsInfoScreen = ({ }) => {
             </View>
           </View>
         </KeyboardAvoidingScrollView>
-        <Button title='Next' className='mt-5' onPress={form.handleSubmit(onSubmit)} />
+        <Button title='Next' className='my-5' onPress={form.handleSubmit(onSubmit)} />
       </Container>
     </>
   );

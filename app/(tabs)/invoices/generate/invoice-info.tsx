@@ -66,7 +66,7 @@ const InvoiceInfoScreen = ({ }) => {
             </FormProvider>
           </View>
         </KeyboardAvoidingScrollView>
-        <Button title='Next' className='' onPress={form.handleSubmit(onSubmit)} />
+        <Button title='Next' className='my-5' onPress={form.handleSubmit(onSubmit)} />
       </Container>
     </>
   );

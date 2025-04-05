@@ -128,7 +128,7 @@ const SummaryScreen = () => {
             <Link href={'/invoices/generate/success'} asChild>
                 <Button
                     title="Generate Invoice"
-                    className="mt-5"
+                    className="my-5"
                 />
             </Link>
         </Container>
